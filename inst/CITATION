@@ -1,0 +1,17 @@
+citHeader("To cite 'tnet' in publications use:")
+
+citEntry(entry="Article",
+         title = "tnet: Software for Analysis of Weighted and Longitudinal networks, version 0.0.6",
+         author  = personList(as.person("Tore Opsahl")),
+         year    = 2009,
+         url     = "http://www.opsahl.co.uk/tnet/",
+         
+         textVersion = 
+          paste("Opsahl, T. (2009)",
+          "tnet: Software for Analysis of Weighted and Longitudinal networks, version 0.0.6",
+          "http://www.opsahl.co.uk/tnet/",
+               sep="")
+         )
+
+citFooter("I have invested a lot of time and effort in creating 'tnet',",
+          "please cite it when using it for data analysis.")
