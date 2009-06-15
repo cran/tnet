@@ -5,15 +5,14 @@
 \usage{ closeness_w(edgelist, directed=NULL, precomp.dist=NULL) }
 
 \arguments{
-  \item{edgelist}{A weighted edgelist}
-  \item{directed}{Logical: whether the edgelist is directed or undirected. Default is NULL, then the function detects this parameter.}
-  \item{precomp.dist}{If you have already computed the distance matrix using distance\_w, you can enter the name of the matrix object here. }
+  \item{edgelist}{ A weighted edgelist }
+  \item{directed}{ Logical: whether the edgelist is directed or undirected. Default is NULL, then the function detects this parameter. }
+  \item{precomp.dist}{ If you have already computed the distance matrix using distance\_w, you can enter the name of the matrix object here. }
 }
-\value{ Returns a distance matrix. }
-\references{ t.opsahl@qmul.ac.uk }
-\author{ Tore Opsahl }
-\note{ version 1.0.0
-}
+\value{ Returns a data.frame with two columns: the first containts the node ids of all the nodes in the edgelist, and the second containts the corresponding closeness scores. }
+\references{ http://toreopsahl.com/2009/01/09/average-shortest-distance-in-weighted-networks/ }
+\author{ Tore Opsahl; http://toreopsahl.com }
+\note{ version 1.0.0 }
 \examples{
 ## Load sample data
 sampledata <- rbind(

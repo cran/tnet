@@ -1,11 +1,10 @@
-\name{weighted_richclub}
-\alias{weighted_richclub}
+\name{weighted_richclub_w}
+\alias{weighted_richclub_w}
 \title{ The weighted rich-club effect }
-\description{
-  This function calculates the weighted rich-club coefficient proposed in Opsahl, T., Colizza, V., Panzarasa, P., Ramasco, J.J., 2008. Prominence and control: The weighted rich-club effect. PRL 101. 
-}
-\usage{weighted_richclub(edgelist, rich="k", reshuffle="weights", samples=100, 
-seed=NULL, directed=NULL)}
+\description{ This function calculates the weighted rich-club coefficient proposed in Opsahl, T., Colizza, V., Panzarasa, P., Ramasco, J.J., 2008. Prominence and control: The weighted rich-club effect. PRL 101. \cr
+http://toreopsahl.com/2008/12/12/article-prominence-and-control-the-weighted-rich-club-effect/ }
+\usage{weighted_richclub_w(edgelist, rich="k", reshuffle="weights", 
+samples=100, seed=NULL, directed=NULL)}
 \arguments{
   \item{edgelist}{A weighted edgelist}
   \item{rich}{ specifies the richness parameter, either "k" or "s". }
@@ -15,8 +14,9 @@ seed=NULL, directed=NULL)}
   \item{directed}{ logical parameter: whether the network is directed or undirected. }
 }
 \value{  Returns a table with the fraction of phi(observed) over phi(null) for each k or s in the dataset.}
-\references{ Opsahl et al., 2008. Prominence and control: The weighted rich-club effect. PRL 101 }
-\author{ Tore Opsahl t.opsahl@qmul.ac.uk }
+\references{ Opsahl et al., 2008. Prominence and control: The weighted rich-club effect. PRL 101\cr
+http://toreopsahl.com/2008/12/12/article-prominence-and-control-the-weighted-rich-club-effect/ }
+\author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0 }
 \examples{
 ## Load sample data
@@ -35,7 +35,7 @@ c(5,6,1),
 c(6,5,1))
 
 ## Run the function
-weighted_richclub(sampledata, rich="k", reshuffle="weights")
+weighted_richclub_w(sampledata, rich="k", reshuffle="weights")
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

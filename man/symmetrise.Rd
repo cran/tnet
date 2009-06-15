@@ -1,9 +1,7 @@
 \name{symmetrise}
 \alias{symmetrise}
 \title{ Symmetrise }
-\description{
-  The symmetrise function creates an undirected edgelist from a directed edgelist.
-}
+\description{ The symmetrise function creates an undirected edgelist from a directed edgelist. }
 \usage{symmetrise(edgelist, method="MAX")}
 \arguments{
   \item{edgelist}{A directed weighted edgelist}
@@ -16,8 +14,8 @@
   "DIFF" sets the weight to the absolute difference between the weight(s) of the arc(s) }
 }
 \value{Returns the undirected edgelist.}
-\references{ t.opsahl@qmul.ac.uk }
-\author{ Tore Opsahl }
+\references{ http://toreopsahl.com/2008/11/28/network-weighted-network/ }
+\author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0}
 \examples{
 ## Load sample data

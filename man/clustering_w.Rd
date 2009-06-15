@@ -2,9 +2,7 @@
 \alias{clustering_w}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Generalised clusering coefficient }
-\description{
-  This programme provides the outcomes of the generalised clusering coefficient as proposed by Opsahl and Panzarasa: Clustering in weighted networks
-}
+\description{ This function calculates the generalised clusering coefficient as proposed by Opsahl, T., Panzarasa, P., 2009. Clustering in weighted networks. Social Networks 31 (2), 155-163, doi: 10.1016/j.socnet.2009.02.002 }
 \usage{clustering_w(edgelist, measure = "mi")}
 \arguments{
   \item{edgelist}{A weighted edgelist}
@@ -16,8 +14,9 @@
   This can be c("am", "gm", "mi", "ma") to calculate all. }
 }
 \value{Returns the outcome of the equation presented in the paper for the method specific (measure)}
-\references{Opsahl. T., Panzarasa, P., 2009. Clustering in weighted networks. Social Networks. }
-\author{ Tore Opsahl t.opsahl@qmul.ac.uk }
+\references{ Opsahl, T., Panzarasa, P., 2009. Clustering in weighted networks. Social Networks 31 (2), 155-163, doi: 10.1016/j.socnet.2009.02.002 \cr
+http://toreopsahl.com/2009/04/03/article-clustering-in-weighted-networks/ }
+\author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0 }
 
 \examples{

@@ -1,4 +1,4 @@
-`weighted_richclub` <-
+`weighted_richclub_w` <-
 function(edgelist,rich="k", reshuffle="weights", samples=100, 
 seed=NULL, directed=NULL){
   #Internal function: the non-normalised coefficient

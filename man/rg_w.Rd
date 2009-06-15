@@ -13,8 +13,8 @@
   \item{seed}{ the random seed. If you want it to be non-reproducable, use NULL otherwise, use a number }
 }
 \value{  Returns a random edgelist with random weights.}
-\references{ t.opsahl@qmul.ac.uk }
-\author{ Tore Opsahl }
+\references{ http://opsahl.co.uk/tnet/ }
+\author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0}
 \examples{
 rg_w(nodes=10,arcs=30,max.weight=5,directed=FALSE,seed=1)

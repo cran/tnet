@@ -11,8 +11,10 @@
   \item{seed}{ seed for random generator, set if you want random yet reproducable results. }
 }
 \value{ Returns a distance matrix. }
-\references{ t.opsahl@qmul.ac.uk }
-\author{ Tore Opsahl }
+\references{ Molloy, M., Reed, B., 1995. A critical point for random graphs with a given degree sequence. Random Structures and Algorithms 6, 161-180. \cr
+Opsahl, T., Colizza, V., Panzarasa, P., Ramasco, J. J., 2008. Prominence and control: The weighted rich-club effect. Physical Review Letters 101 (168702). arXiv:0804.0417. \cr
+http://toreopsahl.com/2008/12/12/article-prominence-and-control-the-weighted-rich-club-effect/ }
+\author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0}
 \examples{
 ## Load sample data
