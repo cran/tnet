@@ -3,15 +3,13 @@
 \alias{tnet}
 \docType{package}
 \title{ Collection of function for analysing weighted networks, two-mode networks, and longitudinal networks }
-\description{
-This package is all about analysis of weighted networks, two-mode networks, and longitudinal networks. Binary relations limit the richness of network relations as all relations are unique. The two-mode structure contains a number of features lost when projection. Longitudinal dataset can allow for an understanding of the causal relationship as all elements of a cross-sectional dataset depends on each other.
-}
+\description{ This package can analyse weighted networks, two-mode networks, and longitudinal networks. Binary ties limit the richness of networks as all relations are unique. The two-mode structure contains a number of features lost when projection it to a one-mode network. Longitudinal datasets allow for an understanding of the causal relationship among ties, which is not the case in cross-sectional datasets as ties depend on each other. }
 \details{
 \tabular{ll}{
 Package: \tab tnet\cr
 Type: \tab Package\cr
-Version: \tab 0.1.0\cr
-Date: \tab 2009-06-15 }
+Version: \tab 0.1.1\cr
+Date: \tab 2009-07-01 }
 
 This package allows for analysis of weighted network, two-mode network, and longitudinal network datasets. More information is available on http://opsahl.co.uk/tnet/ and http://toreopsahl.com
 
@@ -39,9 +37,7 @@ where the first row refers to vertex id 1, the second row to vertex id 2, and so
 \references{ http://opsahl.co.uk/tnet/ }
 \author{ Tore Opsahl; http://toreopsahl.com }
 %\keyword{ networks }
-\seealso{
-SNA \code{\link[sna:sna-package]{sna}} 
-}
+\seealso{}
 \examples{
 # Generate a random weighted graph
 rg <- rg_w(nodes=100,arcs=300,directed=TRUE)

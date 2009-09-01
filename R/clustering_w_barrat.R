@@ -1,27 +1,29 @@
 `clustering_w_barrat` <-
-function(edgelist, measure="am"){
-  #Assign names to columns
-  dimnames(edgelist)[[2]] <- c("i","j","w")
+function(net, measure="am"){
+  if(is.null(attributes(net)$tnet))
+    net <- as.tnet(net, type="weighted one-mode tnet")
+  if(attributes(net)$tnet!="weighted one-mode tnet")
+    stop("Network not loaded properly")
   #Find basic parameters
-  N <- max(c(edgelist[,"i"],edgelist[,"j"]))
-  E <- nrow(edgelist)
+  N <- max(c(net[,"i"],net[,"j"]))
+  E <- nrow(net)
   #Ensure network is undirected
-  tmp <- rbind(edgelist, cbind(i=edgelist[,"j"], j=edgelist[,"i"], w=0))
+  tmp <- rbind(net, cbind(i=net[,"j"], j=net[,"i"], w=0))
   tmp <- tmp[!duplicated(tmp[,c("i","j")]),]
   if(nrow(tmp) != E) 
     stop("Network is not undirected!\nMeasure is not defined from directed networks.\n")
   #Create output object
-  edgelist <- edgelist[order(edgelist[,"i"], edgelist[,"j"]),]
-  index <- edgelist[,"i"]
-  output <- cbind(vertex=1:N, degree=0, strength=0, am=NaN, gm=NaN, ma=NaN, mi=NaN)
-  output[unique(index), "degree"] <- tapply(edgelist[,"w"], index, length)
-  output[unique(index), "strength"] <- tapply(edgelist[,"w"], index, sum)
+  net <- net[order(net[,"i"], net[,"j"]),]
+  index <- net[,"i"]
+  output <- cbind(node=1:N, degree=0, strength=0, am=NaN, gm=NaN, ma=NaN, mi=NaN)
+  output[unique(index), "degree"] <- tapply(net[,"w"], index, length)
+  output[unique(index), "strength"] <- tapply(net[,"w"], index, sum)
   #Define numerator-support table
-  tri <- cbind(edgelist[,c("i","j")], 1)
+  tri <- cbind(net[,c("i","j")], 1)
   dimnames(tri)[[2]] <- c("j","h","closed")
   #For every node
-  for(i in output[output[,"degree"]>=2,"vertex"]) {
-    js <- hs <- edgelist[edgelist[,"i"]==i,c("j","w")]
+  for(i in output[output[,"degree"]>=2,"node"]) {
+    js <- hs <- net[net[,"i"]==i,c("j","w")]
     dimnames(js)[[2]] <- c("j","wij")
     dimnames(hs)[[2]] <- c("h","wih")
     #All possible ties
@@ -43,7 +45,7 @@ function(edgelist, measure="am"){
     output[i,"mi"] <- sum(jhs[jhs[,"closed"]==1,"MI"])/sum(jhs[,"MI"])
   }
   #Return output
-  return(output[,c("vertex",measure)])
+  return(output[,c("node",measure)])
 }
 
 

@@ -1,18 +1,16 @@
 `distance_w` <-
-function(edgelist,directed=NULL,gconly=TRUE){
-  edgelist     <- as.matrix(edgelist)
-  dimnames(edgelist)[[2]] <- c("i","j","w")
-  #no self-loops
-  edgelist     <- edgelist[edgelist[,"i"]!=edgelist[,"j"],];
-  #all positive weights
-  edgelist     <- edgelist[edgelist[,"w"]>0,];               
+function(net,directed=NULL,gconly=TRUE){
+  if(is.null(attributes(net)$tnet))
+    net <- as.tnet(net, type="weighted one-mode tnet")
+  if(attributes(net)$tnet!="weighted one-mode tnet")
+    stop("Network not loaded properly")
   #inversion
-  edgelist[,3] <- 1/edgelist[,"w"]     
-  #check whether the edgelist is directed        
+  net[,"w"] <- 1/net[,"w"]     
+  #check whether the net is directed        
   if(is.null(directed))
-    directed <- (nrow(symmetrise(edgelist))!=nrow(edgelist))
+    directed <- (nrow(symmetrise(net))!=nrow(net))
   #nodes
-  n            <- max(edgelist[,c("i","j")])                 
+  n            <- max(net[,c("i","j")])                 
   #distance matrix
   d            <- matrix(data=Inf, ncol=n, nrow=n)   
   #convert the data so that the RBGL package can read it.        
@@ -21,8 +19,7 @@ function(edgelist,directed=NULL,gconly=TRUE){
   E <- vector("list", length=n);
   names(E) <- V;
   for(i in 1:n)
-    E[[i]] <- list(edges=edgelist[edgelist[,"i"]==i,"j"], 
-                weights=edgelist[edgelist[,"i"]==i,"w"])
+    E[[i]] <- list(edges=net[net[,"i"]==i,"j"], weights=net[net[,"i"]==i,"w"])
   if(directed) {
     g <- new("graphNEL", nodes=V, edgeL=E, edgemode="directed")
   } else {
@@ -36,8 +33,7 @@ function(edgelist,directed=NULL,gconly=TRUE){
     g <- subGraph(gc, g)
   }
   #Calculate the distances
-  d <- t(sapply(gc, function(a) 
-          dijkstra.sp(g, start=a)$distances))
+  d <- t(sapply(gc, function(a) dijkstra.sp(g, start=a)$distances))
   diag(d) <- NA
   return(d)
 }

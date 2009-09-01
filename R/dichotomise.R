@@ -1,12 +1,15 @@
 `dichotomise` <-
-function(edgelist,GT=0){
-  edgelist <- as.matrix(edgelist)
+function(net,GT=0){
+  if(is.null(attributes(net)$tnet))
+    net <- as.tnet(net, type="weighted one-mode tnet")
+  if(attributes(net)$tnet!="weighted one-mode tnet")
+    stop("Network not loaded properly")
   #Extract ties with a weight greater than GT
-  edgelist <- edgelist[edgelist[,3]>GT,]
+  net <- net[net[,3]>GT,]
   #Set their weight to 1
-  edgelist[,3] <- 1
-  row.names(edgelist)<-NULL
-  #Assign names to edgelist
-  dimnames(edgelist)[[2]]<-c("i","j","w")
-  return(edgelist)
+  net[,3] <- 1
+  row.names(net)<-NULL
+  #Assign names to net
+  dimnames(net)[[2]]<-c("i","j","w")
+  return(net)
 }

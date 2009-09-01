@@ -4,9 +4,9 @@
 \description{
   The dichotomise function creates a binary network from a weighted edgelist.
 }
-\usage{dichotomise(edgelist,GT=0)}
+\usage{dichotomise(net,GT=0)}
 \arguments{
-  \item{edgelist}{A weighted edgelist}
+  \item{net}{A weighted edgelist}
   \item{GT}{ the cut-off parameter. Default is set to 0, so edges/arcs with a weight greater than 0 is set to 1. }
 }
 \value{Returns the edgelist with edges below the cut-off removed, and all weights equal to 1.}

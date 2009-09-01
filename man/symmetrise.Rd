@@ -2,9 +2,9 @@
 \alias{symmetrise}
 \title{ Symmetrise }
 \description{ The symmetrise function creates an undirected edgelist from a directed edgelist. }
-\usage{symmetrise(edgelist, method="MAX")}
+\usage{symmetrise(net, method="MAX")}
 \arguments{
-  \item{edgelist}{A directed weighted edgelist}
+  \item{net}{A directed weighted edgelist}
   \item{method}{ the method used to decide the weight of the undirected edge. It can be: 
   "MAX" sets the weight to the maximum of the weight(s) of the arc(s)
   "MIN" sets the weight to the minimumof the weight(s) of the arc(s)

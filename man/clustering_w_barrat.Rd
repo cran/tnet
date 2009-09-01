@@ -4,9 +4,9 @@
 \title{ Barrat et al. (2004) generalised local clusering coefficient }
 \description{ This function calculates Barrat et al. (2004) generalised local clusering coefficient.\cr
 See http://toreopsahl.com/2009/01/23/weighted-local-clustering-coefficient/ for a detailed description. By default it measure the triplet value as the average of the two ties; however it can also define it differently. See the blog post. }
-\usage{clustering_w_barrat(edgelist, measure = "am")}
+\usage{clustering_w_barrat(net, measure = "am")}
 \arguments{
-  \item{edgelist}{A weighted edgelist}
+  \item{net}{A weighted edgelist}
   \item{measure}{ The measure-switch control the method used to calculate the value of the triplets.\cr
   am implies the arithmetic mean method\cr
   gm implies the geometric mean method\cr
@@ -14,7 +14,7 @@ See http://toreopsahl.com/2009/01/23/weighted-local-clustering-coefficient/ for 
   ma implies the maximum method\cr
   This can be c("am", "gm", "mi", "ma") to calculate all. }
 }
-\value{Returns the outcome of the equation presented in the paper for the method specific (measure)}
+\value{ Returns a data.frame with at least two columns: the first containts the node ids of all the nodes in the edgelist, and the remaining ones containt the corresponding clustering scores. }
 \references{ Barrat, A., Barthelemy, M., Pastor-Satorras, R., Vespignani, A., 2004. The architecture of complex weighted networks. Proceedings of the National Academy of Sciences 101 (11), 3747-3752. arXiv:cond-mat/0311416 \cr
 http://toreopsahl.com/2009/01/23/weighted-local-clustering-coefficient/ }
 \author{ Tore Opsahl; http://toreopsahl.com }

@@ -1,19 +1,16 @@
 `shrink_to_weighted_network` <-
-function(edgelist){
-  edgelist <- as.data.frame(edgelist)
-  #Order edgelist
-  edgelist <- edgelist[order(edgelist[,1],edgelist[,2]),]
+function(net){
+  net <- as.data.frame(net)
+  #Order net
+  net <- net[order(net[,1],net[,2]),]
   #Find duplicates
-  edgelist[,3] <- as.numeric(!duplicated(edgelist[,1:2]))
+  net[,3] <- as.numeric(!duplicated(net[,1:2]))
   #Create an index of ties
-  edgelist[,4] <- cumsum(edgelist[,3])
+  net[,4] <- cumsum(net[,3])
   #Count duplications
-  edgelist[edgelist[,3]==1,5] <- tapply(edgelist[,3], 
-    edgelist[,4], length)
+  net[net[,3]==1,5] <- tapply(net[,3], 
+    net[,4], length)
   #Extract relevant columns
-  edgelist <- edgelist[edgelist[,3]==1,c(1,2,5)]
-  row.names(edgelist)<-NULL
-  #Assign names to columns
-  dimnames(edgelist)[[2]]<-c("i","j","w")
-  return(edgelist)
+  net <- net[net[,3]==1,c(1,2,5)]
+  return(as.tnet(net, type="weighted one-mode tnet"))
 }

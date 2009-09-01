@@ -1,11 +1,11 @@
 \name{closeness_w}
 \alias{closeness_w}
-\title{ Closeness in a weighted network }
-\description{ This function calculates closeness scores for a weighted network based on the distance\_w. }
-\usage{ closeness_w(edgelist, directed=NULL, precomp.dist=NULL) }
+\title{ Closeness centrality in a weighted network }
+\description{ This function calculates closeness scores for nodes in a weighted network based on the distance\_w. }
+\usage{ closeness_w(net, directed=NULL, precomp.dist=NULL) }
 
 \arguments{
-  \item{edgelist}{ A weighted edgelist }
+  \item{net}{ A weighted edgelist }
   \item{directed}{ Logical: whether the edgelist is directed or undirected. Default is NULL, then the function detects this parameter. }
   \item{precomp.dist}{ If you have already computed the distance matrix using distance\_w, you can enter the name of the matrix object here. }
 }

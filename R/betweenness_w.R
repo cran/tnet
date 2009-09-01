@@ -1,22 +1,22 @@
 `betweenness_w` <-
-function(edgelist, directed=NULL){
-  edgelist     <- data.frame(i=as.integer(edgelist[,1]), j=as.integer(edgelist[,2]),w=edgelist[,3])
-  dimnames(edgelist)[[2]] <- c("i","j","w")
+function(net, directed=NULL){
+  net     <- data.frame(i=as.integer(net[,1]), j=as.integer(net[,2]),w=net[,3])
+  dimnames(net)[[2]] <- c("i","j","w")
   #no self-loops
-  edgelist     <- edgelist[edgelist[,"i"]!=edgelist[,"j"],];
+  net     <- net[net[,"i"]!=net[,"j"],];
   #all positive weights
-  edgelist     <- edgelist[edgelist[,"w"]>0,];
+  net     <- net[net[,"w"]>0,];
   #check if network is directed
   if(is.null(directed))
-    directed   <- (nrow(symmetrise(edgelist))!=nrow(edgelist))
+    directed   <- (nrow(symmetrise(net))!=nrow(net))
   if(!directed)
-    edgelist <- edgelist[edgelist[,1]<edgelist[,2],]
+    net <- net[net[,1]<net[,2],]
   #Number of nodes and edges 
-  N <- as.integer(max(c(edgelist[,1], edgelist[,2])))
-  E <- as.integer(nrow(edgelist))
+  N <- as.integer(max(c(net[,1], net[,2])))
+  E <- as.integer(nrow(net))
   #Elements for C-function
-  EM <- as.integer(t(edgelist[,1:2])-1)
-  EW <- as.numeric(1/edgelist[,3])
+  EM <- as.integer(t(net[,1:2])-1)
+  EW <- as.numeric(1/net[,3])
   #Possible fix for 1/3, but not working when 2x1/6 and 1x1/3
   ##EW <- as.numeric(ceiling(1000000*EW))
   #Run C function from RBGL

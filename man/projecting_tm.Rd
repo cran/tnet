@@ -4,9 +4,9 @@
 \title{ Projecting binary and weighted two-mode networks onto weighted one-mode networks. }
 \description{ This function is the implemtation of the procedure outlined on \cr
 http://toreopsahl.com/2009/05/01/projecting-two-mode-networks-onto-weighted-one-mode-networks/ }
-\usage{projecting_tm(edgelist, method = "sum")}
+\usage{projecting_tm(net, method = "sum")}
 \arguments{
-  \item{edgelist}{A two-mode edgelist}
+  \item{net}{A two-mode edgelist}
   \item{method}{ The method-switch control the method used to calculate the weights.\cr
   binary sets all weights to 1\cr
   sum sets the weights to the number of cooccurances\cr

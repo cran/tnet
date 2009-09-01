@@ -2,9 +2,9 @@
 \alias{shrink_to_weighted_network}
 \title{ Shrink a repetative edgelist into a weighted }
 \description{ This function creates a weighted edgelist from a list of edges where a duplicate means an increase in the weight. }
-\usage{shrink_to_weighted_network(edgelist)}
+\usage{shrink_to_weighted_network(net)}
 \arguments{
-  \item{edgelist}{ can use both undirected and directed edgelist in the following format (sender.id receiver.id weight):\cr
+  \item{net}{ can use both undirected and directed edgelist in the following format (sender.id receiver.id weight):\cr
    1 2\cr
    1 2\cr
    1 2\cr

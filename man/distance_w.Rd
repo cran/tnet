@@ -2,9 +2,9 @@
 \alias{distance_w}
 \title{ Distance in a weighted network }
 \description{ The shortest path length, or geodesic distance, between two nodes in a binary network is the minimum number of steps you need to make to go from one of them to the other. This distance is the quickest connection between nodes when all ties are the same. However, in a weighted network, all ties are not the same. See http://toreopsahl.com/2009/01/09/average-shortest-distance-in-weighted-networks/ for more deatails. }
-\usage{ distance_w(edgelist, directed=NULL, gconly=TRUE) }
+\usage{ distance_w(net, directed=NULL, gconly=TRUE) }
 \arguments{
-  \item{edgelist}{A weighted edgelist}
+  \item{net}{A weighted edgelist}
   \item{directed}{ logical, whether the network is directed or undirected. Default is NULL, this means that the function checks whether the edgelist is directed or not.}
   \item{gconly}{ logical, whether the function should only be calculated for the giant component. Default is TRUE.}
 }

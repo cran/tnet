@@ -1,46 +1,35 @@
 `degree_w` <-
-function(edgelist, measure=c("degree", "output"), 
-self.loops=FALSE, type="out"){
-  #Check that a valid measure is chosen
-  if(length(which(measure=="degree" | measure=="output"))==0)
-    stop("you must specify a valid option")
-  edgelist <- as.data.frame(edgelist)
+function(net, measure=c("degree", "output"), type="out"){
+  if(is.null(attributes(net)$tnet))
+    net <- as.tnet(net, type="weighted one-mode tnet")
+  if(attributes(net)$tnet!="weighted one-mode tnet")
+    stop("Network not loaded properly")
   #Reverse data if calculating in-degrees
-  if(type == "in")
-    edgelist <- data.frame(edgelist[,2], edgelist[,1], 
-                           edgelist[,3])
-  #Assign names to columns
-  dimnames(edgelist)[[2]] <- c("i","j","w")
-  #Remove self-loops?
-  if(!self.loops)
-    edgelist <- edgelist[edgelist[,"i"]!=edgelist[,"j"],];
-  #Only positive ties
-  edgelist <- edgelist[edgelist[,"w"]>0,];
-  edgelist <- edgelist[order(edgelist[,"i"],edgelist[,"j"]),]
-  #No duplication of ties in weighted edgelists
-  edgelist <- edgelist[!duplicated(edgelist[,c("i","j")]),]
-
+  if(type == "in") {
+    net <- data.frame(i=net[,2], j=net[,1], w=net[,3])
+    net <- net[order(net[,"i"],net[,"j"]),]
+  }
   ##Calculate measures
   #Create an index for each node
-  index <- cumsum(!duplicated(edgelist[,1]))
+  index <- cumsum(!duplicated(net[,1]))
   #Create output object
-  k.list <- cbind(unique(edgelist[,1]), NaN, NaN)
+  k.list <- cbind(unique(net[,1]), NaN, NaN)
   #Assign names
-  dimnames(k.list)[[2]]<-c("vertex","degree","output")
+  dimnames(k.list)[[2]]<-c("node","degree","output")
   #Calculating degree?
   if(length(which(measure=="degree"))==1)
-    k.list[,"degree"] <- tapply(edgelist[,"w"], index, length)
+    k.list[,"degree"] <- tapply(net[,"w"], index, length)
   #Calculating strength?
   if(length(which(measure=="output"))==1)
-    k.list[,"output"] <- tapply(edgelist[,"w"], index, sum)
+    k.list[,"output"] <- tapply(net[,"w"], index, sum)
   #Add rows to the output object if isolates exists
-  if(max(edgelist[,c("i","j")]) != nrow(k.list)) {
-    k.list <- rbind(k.list, cbind(1:max(edgelist[,c("i","j")]),
+  if(max(net[,c("i","j")]) != nrow(k.list)) {
+    k.list <- rbind(k.list, cbind(1:max(net[,c("i","j")]),
       0, 0))
-    k.list <- k.list[order(k.list[,"vertex"]),]
-    k.list <- k.list[!duplicated(k.list[,"vertex"]),]
+    k.list <- k.list[order(k.list[,"node"]),]
+    k.list <- k.list[!duplicated(k.list[,"node"]),]
   }
   #Extract just relevant columns
-  k.list <- k.list[,c("vertex", measure)]
+  k.list <- k.list[,c("node", measure)]
   return(k.list)
 }

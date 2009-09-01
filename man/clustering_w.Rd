@@ -3,9 +3,9 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Generalised clusering coefficient }
 \description{ This function calculates the generalised clusering coefficient as proposed by Opsahl, T., Panzarasa, P., 2009. Clustering in weighted networks. Social Networks 31 (2), 155-163, doi: 10.1016/j.socnet.2009.02.002 }
-\usage{clustering_w(edgelist, measure = "mi")}
+\usage{clustering_w(net, measure = "mi")}
 \arguments{
-  \item{edgelist}{A weighted edgelist}
+  \item{net}{A weighted edgelist}
   \item{measure}{ The measure-switch control the method used to calculate the value of the triplets.\cr
   am implies the arithmetic mean method\cr
   gm implies the geometric mean method\cr

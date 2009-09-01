@@ -3,10 +3,9 @@
 \title{ The weighted rich-club effect }
 \description{ This function calculates the weighted rich-club coefficient proposed in Opsahl, T., Colizza, V., Panzarasa, P., Ramasco, J.J., 2008. Prominence and control: The weighted rich-club effect. PRL 101. \cr
 http://toreopsahl.com/2008/12/12/article-prominence-and-control-the-weighted-rich-club-effect/ }
-\usage{weighted_richclub_w(edgelist, rich="k", reshuffle="weights", 
-samples=100, seed=NULL, directed=NULL)}
+\usage{weighted_richclub_w(net, rich="k", reshuffle="weights", samples=100, seed=NULL, directed=NULL)}
 \arguments{
-  \item{edgelist}{A weighted edgelist}
+  \item{net}{A weighted edgelist}
   \item{rich}{ specifies the richness parameter, either "k" or "s". }
   \item{reshuffle}{ specifies the reshuffling procedure used, either "weights" or "links". }
   \item{samples}{ number of random networks used. }

@@ -2,15 +2,15 @@
 \alias{rg_reshuffling_w}
 \title{ Reshuffle of a weighted network }
 \description{ This function randomly resuffles a weighted edgelist. }
-\usage{ rg_reshuffling_w(edgelist, option="weights", directed=NULL, seed=NULL) }
+\usage{ rg_reshuffling_w(net, option="weights", directed=NULL, seed=NULL) }
 
 \arguments{
-  \item{edgelist}{A weighted edgelist}
-  \item{option}{ what should be reshuffled: 1) weights (default): randomly assigns the weights to the edges; 2) degree: maintain the degree distribution, but changes the contacts randomly. }
+  \item{net}{A weighted edgelist}
+  \item{option}{ what should be reshuffled: 1) weights (default): randomly assigns the weights to the edges; 2) links: maintain the degree distribution, but changes the contacts randomly. }
   \item{directed}{ logical: is the network directed or undirected. Default: NULL }
   \item{seed}{ seed for random generator, set if you want random yet reproducable results. }
 }
-\value{ Returns a distance matrix. }
+\value{ Returns a randomised (reshuffled) network. }
 \references{ Molloy, M., Reed, B., 1995. A critical point for random graphs with a given degree sequence. Random Structures and Algorithms 6, 161-180. \cr
 Opsahl, T., Colizza, V., Panzarasa, P., Ramasco, J. J., 2008. Prominence and control: The weighted rich-club effect. Physical Review Letters 101 (168702). arXiv:0804.0417. \cr
 http://toreopsahl.com/2008/12/12/article-prominence-and-control-the-weighted-rich-club-effect/ }

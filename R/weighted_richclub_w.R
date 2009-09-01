@@ -1,41 +1,44 @@
 `weighted_richclub_w` <-
-function(edgelist,rich="k", reshuffle="weights", samples=100, 
-seed=NULL, directed=NULL){
+function(net,rich="k", reshuffle="weights", samples=100, seed=NULL, directed=NULL){
+  if(is.null(attributes(net)$tnet))
+    net <- as.tnet(net, type="weighted one-mode tnet")
+  if(attributes(net)$tnet!="weighted one-mode tnet")
+    stop("Network not loaded properly")
   #Internal function: the non-normalised coefficient
   `weighted_richclub_internal` <-
-  function(edgelist,club="degree",directed=FALSE){
+  function(net,club="degree",directed=FALSE){
     #Name columns
-    dimnames(edgelist)[[2]] <- c("i", "j", "w")
-    #Order edgelist
-    edgelist <- edgelist[order(edgelist[,"i"],edgelist[,"j"]),]
+    dimnames(net)[[2]] <- c("i", "j", "w")
+    #Order net
+    net <- net[order(net[,"i"],net[,"j"]),]
     #Calculate prominence vector
-    k.list <- degree_w(edgelist, measure=club[2:length(club)]);
+    k.list <- degree_w(net, measure=club[2:length(club)]);
     if(club[1]=="avg.w")
       k.list <- cbind(k.list, 
                       avg.w=k.list[,'output']/k.list[,'degree'])
     #Defining x-axis
     output <- unique(k.list[,club[1]])
     output <- cbind(x=output[order(output)],num=NaN,den=NaN,y=NaN)
-    edgelist <- cbind(edgelist, rc.i=rep(k.list[,club[1]],
+    net <- cbind(net, rc.i=rep(k.list[,club[1]],
                   k.list[,"degree"]))
     if(directed==FALSE) {
-      edgelist <- edgelist[order(edgelist[,"j"],edgelist[,"i"]),]
-      edgelist <- cbind(edgelist, rc.j=rep(k.list[,club[1]],
+      net <- net[order(net[,"j"],net[,"i"]),]
+      net <- cbind(net, rc.j=rep(k.list[,club[1]],
         k.list[,"degree"]))
-      edgelist <- edgelist[order(edgelist[,"i"],edgelist[,"j"]),]
+      net <- net[order(net[,"i"],net[,"j"]),]
     } else {
-      edgelist <- cbind(edgelist, rc.j=sapply(edgelist[,"j"], 
+      net <- cbind(net, rc.j=sapply(net[,"j"], 
         function(a) sum(k.list[k.list[,"vertex"]==a,club[1]])))
     }
-    edgelist <- cbind(edgelist, 
-      rc=pmin.int(edgelist[,"rc.i"],edgelist[,"rc.j"]))
+    net <- cbind(net, 
+      rc=pmin.int(net[,"rc.i"],net[,"rc.j"]))
     output[,"num"] <- sapply(output[,"x"], 
-      function(a) sum(edgelist[edgelist[,"rc"]>=a,"w"]))
+      function(a) sum(net[net[,"rc"]>=a,"w"]))
     tmp.no.edges <- sapply(output[,"x"], 
-      function(a) length(edgelist[edgelist[,"rc"]>=a,"w"]))
-    edgelist <- edgelist[order(-edgelist[,"w"]),]
+      function(a) length(net[net[,"rc"]>=a,"w"]))
+    net <- net[order(-net[,"w"]),]
     output[,"den"] <- sapply(output[,"x"], function(a) 
-      sum(edgelist[1:tmp.no.edges[which(output[,"x"]==a)],"w"]))
+      sum(net[1:tmp.no.edges[which(output[,"x"]==a)],"w"]))
     output[,"y"] <- output[,"num"]/output[,"den"]
     return(output)
   }
@@ -44,7 +47,7 @@ seed=NULL, directed=NULL){
     set.seed(as.integer(seed))
   #Check whether the network is directed
   if(is.null(directed))
-    directed <- (nrow(symmetrise(edgelist))!=nrow(edgelist))
+    directed <- (nrow(symmetrise(net))!=nrow(net))
   #Get the measure parameter for degree_w
   if(rich=="k") {
     club <- c("degree","degree")
@@ -56,7 +59,7 @@ seed=NULL, directed=NULL){
     stop("rich must be 'k', 's', or 'w'")
   }
   #Calculate the non-normalised coefficient
-  table <- weighted_richclub_internal(edgelist=edgelist, club=club, 
+  table <- weighted_richclub_internal(net=net, club=club, 
              directed=directed)
   observed <- matrix(data=NaN, nrow=max(table[,"x"])+1, ncol=3)
   row.names(observed)<- 0:max(table[,"x"])
@@ -68,11 +71,9 @@ seed=NULL, directed=NULL){
   #Random network loop
   for (i in 1:samples) {
     #Create random network
-    edgelist <- rg_reshuffling_w(edgelist=edgelist, option=reshuffle, 
-                  directed=directed)
+    rnet <- rg_reshuffling_w(net=net, option=reshuffle, directed=directed)
     #Calculate the non-normalised coefficient
-    table <- weighted_richclub_internal(edgelist=edgelist, club=club, 
-               directed=directed)
+    table <- weighted_richclub_internal(net=rnet, club=club, directed=directed)
     #Put results in table
     for (j in table[,"x"])
       random.m[i,j+1]<-table[which(table[,"x"]==j),"y"]

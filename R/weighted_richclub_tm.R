@@ -1,5 +1,9 @@
 `weighted_richclub_tm` <-
-function(edgelist, NR=1000, seed=NULL, projection.method="Newman", nbins=30){
+function(net, NR=1000, seed=NULL, projection.method="Newman", nbins=30){
+  if(is.null(attributes(net)$tnet))
+    net <- as.tnet(net, type="binary two-mode tnet")
+  if(attributes(net)$tnet!="binary two-mode tnet")
+    stop("Network not loaded properly")
   #Internal function: the non-normalised coefficient
   `phi` <- function(net){
     output <- cbind(x=xlevels,num=NaN,den=NaN,y=NaN)
@@ -12,8 +16,8 @@ function(edgelist, NR=1000, seed=NULL, projection.method="Newman", nbins=30){
     output <- output[,"num"]/output[,"den"]
     return(output)
   }
-  dimnames(edgelist)[[2]] <- c("i","p")
-  net.2mode <- edgelist;
+  dimnames(net)[[2]] <- c("i","p")
+  net.2mode <- net;
   net.2mode.list <- split(net.2mode[,2], net.2mode[,1])
   net.1mode <- projecting_tm(net.2mode, method=projection.method)
   
