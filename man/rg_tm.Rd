@@ -13,7 +13,7 @@
   \item{seed}{ the random seed. If you want it to be non-reproducable, use NULL otherwise, use a number }
 }
 \value{Returns a random two-mode network }
-\references{  }
+\references{ Opsahl, T., 2009. Clustering in Two-mode Networks. }
 \author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0 }
 \examples{

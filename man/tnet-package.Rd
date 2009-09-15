@@ -37,7 +37,6 @@ where the first row refers to vertex id 1, the second row to vertex id 2, and so
 \references{ http://opsahl.co.uk/tnet/ }
 \author{ Tore Opsahl; http://toreopsahl.com }
 %\keyword{ networks }
-\seealso{}
 \examples{
 # Generate a random weighted graph
 rg <- rg_w(nodes=100,arcs=300,directed=TRUE)

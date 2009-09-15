@@ -32,7 +32,6 @@ This is variable 5, which is matrix with the results from the link reshuffled ra
   8: normalised weighted distance\cr
   9: size of giant component\cr
 }
-\references{ }
 \author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0 }
 \examples{

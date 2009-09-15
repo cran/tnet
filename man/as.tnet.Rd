@@ -10,7 +10,6 @@
   \item{type}{If you would like to specify the type of network. This could be "weighted one-mode tnet", "binary two-mode tnet", "weighted two-mode tnet", or "longitudinal tnet". }
 }
 \value{Returns the network with an attached lable.}
-\references{  }
 \author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0 }
 \examples{
