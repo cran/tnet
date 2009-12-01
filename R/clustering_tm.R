@@ -1,5 +1,6 @@
 `clustering_tm` <-
 function(net){
+  # Ensure that the network conforms to the tnet standard
   if(is.null(attributes(net)$tnet)) {
     if(ncol(net)==3) {
       net <- as.tnet(net, type="weighted two-mode tnet")

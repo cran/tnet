@@ -1,10 +1,9 @@
 `rg_reshuffling_tm` <-
 function(net,seed=NULL){
-  if(is.null(attributes(net)$tnet))
-    net <- as.tnet(net, type="binary two-mode tnet")
-  if(attributes(net)$tnet!="binary two-mode tnet")
-    stop("Network not loaded properly")
-  #If seed is set, set it formally
+  # Ensure that the network conforms to the tnet standard
+  if(is.null(attributes(net)$tnet))                 net <- as.tnet(net, type="binary two-mode tnet")
+  if(attributes(net)$tnet!="binary two-mode tnet")  stop("Network not loaded properly")
+  # If seed is set, set it formally
   if(!is.null(seed))
     set.seed(as.integer(seed))
   rnet <- cbind(net, ok=0)

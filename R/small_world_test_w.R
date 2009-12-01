@@ -1,12 +1,13 @@
-`random_values` <-
+`small_world_test_w` <-
 function(net, NR=1000, step=c(1,2,3)){
+  # Ensure that the network conforms to the tnet standard
+  if (is.null(attributes(net)$tnet))                      net <- as.tnet(net, type = "weighted one-mode tnet")
+  if (attributes(net)$tnet != "weighted one-mode tnet")   stop("Network not loaded properly")
+
   cat("Running script written by Tore Opsahl\n")
   cat("(t.opsahl@imperial.ac.uk)\n\n")
   cat("Loading network\n")
-  if(is.null(attributes(net)$tnet))
-    net <- as.tnet(net, type="weighted one-mode tnet")
-  if(attributes(net)$tnet!="weighted one-mode tnet")
-    stop("Network not loaded properly")
+  # Basic network parameters
   N <- max(c(net[,1], net[,2]))
   cat(paste("-Number of nodes:    ", N, "\n"))
   E <- nrow(net)
@@ -20,7 +21,7 @@ function(net, NR=1000, step=c(1,2,3)){
     indicator <- as.logical(c(rep(c(rep(FALSE, floor(length(indicator)/50)-1), 1),50), rep(FALSE, length(indicator)-length(rep(c(TRUE, rep(FALSE, floor(length(indicator)/50)-1)),50)))))
  
   cat("1: Calculating measures on observed network\n")
-  if(length(which(step==1))==1) {
+  if(1 %in% step) {
     cat("-Clustering coefficient\n")
     output[[1]] <- clustering_w(net, measure=c("am", "gm", "ma", "mi","bi"))
     cat(paste("--Binary:            ", output[[1]][5], "\n"))
@@ -39,7 +40,7 @@ function(net, NR=1000, step=c(1,2,3)){
     cat("    (skipped)\n")
   }
   cat("2: Calculating measures on random network\n")
-  if(length(which(step==2))==1) {
+  if(2 %in% step) {
     cat(paste("    (based on ", NR, " weight reshuffled networks)\n", sep=""))
     output[[4]]<- matrix(data=0, nrow=NR, ncol=9)
     cat(paste("0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%\n",
@@ -71,7 +72,7 @@ function(net, NR=1000, step=c(1,2,3)){
     cat("    (skipped)\n")
   }
   cat("3: Calculating measures on random network\n")
-  if(length(which(step==3))==1) {
+  if(3 %in% step) {
     cat(paste("    (based on ", NR, " link reshuffled networks)\n", sep=""))
     output[[5]] <- matrix(data=0, nrow=NR, ncol=9)
     cat(paste("0%  10%  20%  30%  40%  50%  60%  70%  80%  90%  100%\n",
@@ -105,3 +106,4 @@ function(net, NR=1000, step=c(1,2,3)){
   }
   return(output)
 }
+

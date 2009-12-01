@@ -1,10 +1,10 @@
-\name{random_values}
-\alias{random_values}
-\title{ Finds the randomly expected values by simulations }
+\name{small_world_test_w}
+\alias{small_world_test_w}
+\title{ Finds the observed and randomly expected clustering coefficient and average shortest distance }
 \description{
-  Finds the randomly expected values by simulations
+  Finds the observed and randomly expected values of the global clustering coefficient and average shortest (geodesic) distance in weighted networks. A network is considered to be a small world if the observed values are comparable to the random ones. The summary information is printed to the screen, and the underlying information is returned as a list. Based on this list, significance can be calculated (e.g., whether the observed values are within the 95% confidence interval of the random values).
 }
-\usage{random_values(net, NR=1000, step=c(1,2,3))}
+\usage{small_world_test_w(net, NR=1000, step=c(1,2,3))}
 \arguments{
   \item{net}{A weighted edgelist}
   \item{NR}{Number of random networks}
@@ -51,7 +51,7 @@ c(5,6,1),
 c(6,5,1))
 
 ## Run the programme
-random_values(sample, NR=2)
+small_world_test_w(sample, NR=2)
 
 }
 

@@ -2,7 +2,7 @@
 \alias{tnet-package}
 \alias{tnet}
 \docType{package}
-\title{ Collection of function for analysing weighted networks, two-mode networks, and longitudinal networks }
+\title{ Collection of functions for analysing weighted networks, two-mode networks, and longitudinal networks }
 \description{ This package can analyse weighted networks, two-mode networks, and longitudinal networks. Binary ties limit the richness of networks as all relations are unique. The two-mode structure contains a number of features lost when projection it to a one-mode network. Longitudinal datasets allow for an understanding of the causal relationship among ties, which is not the case in cross-sectional datasets as ties depend on each other. }
 \details{
 \tabular{ll}{

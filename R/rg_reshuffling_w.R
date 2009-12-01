@@ -1,13 +1,15 @@
 `rg_reshuffling_w` <-
 function(net,option="weights",directed=NULL,seed=NULL){
-  #Assign names to columns
-  dimnames(net)[[2]]<-c("i","j","w")
+  # Ensure that the network conforms to the tnet standard
+  if (is.null(attributes(net)$tnet))                      net <- as.tnet(net, type = "weighted one-mode tnet")
+  if (attributes(net)$tnet != "weighted one-mode tnet")   stop("Network not loaded properly")
+  # Ensure that only one option is specified
   if(length(option)!=1)
      stop("you can only specify one option")
-  #Check whether the edgelist is directed        
+  # Check whether the edgelist is directed        
   if(is.null(directed))
     directed <- (nrow(symmetrise(net))!=nrow(net))
-  #If seed is set, set it formally
+  # If seed is set, set it formally
   if(!is.null(seed))
     set.seed(as.integer(seed))
 
@@ -17,7 +19,7 @@ function(net,option="weights",directed=NULL,seed=NULL){
       net <- net[net[,"i"]<net[,"j"],]
     net[,"w"] <- sample(net[,"w"])
     if(!directed) 
-      net <- symmetrise(net)
+      net <- rbind(net, cbind(i=net[,"j"], j=net[,"i"], w=net[,"w"]))
 
   ## Weight and Link reshuffle
   } else if(option=="links") {
@@ -37,15 +39,16 @@ function(net,option="weights",directed=NULL,seed=NULL){
   ## Local weight reshuffle
   } else if(option=="weights.local") {
     if(!directed)
-      cat("The weights are not symmetric in the reshuffled network\n")
-    net[,"w"] <- unlist(tapply(net[,3], cumsum(!duplicated(net[,1])), function(a) sample(a)))
+      warning("The weights are not symmetric in the reshuffled network")
+    klist <- degree_w(net)
+    index <- net[,1] %in% klist[klist[,"degree"]>1,"node"]
+    net[index,"w"] <- unlist(tapply(net[index,"w"], net[index,"i"], sample))
 
   ## A non-implemented option specified
   } else {
     stop("you must specify a correct option")
   }
   net <- net[order(net[,1], net[,2]),]
-  dimnames(net)[[2]]<-c("i","j","w")
-  rownames(net)<-NULL;
+  net <- as.tnet(net, type = "weighted one-mode tnet")
   return(net)
 }

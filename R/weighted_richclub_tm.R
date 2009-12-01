@@ -1,9 +1,11 @@
 `weighted_richclub_tm` <-
 function(net, NR=1000, seed=NULL, projection.method="Newman", nbins=30){
-  if(is.null(attributes(net)$tnet))
-    net <- as.tnet(net, type="binary two-mode tnet")
-  if(attributes(net)$tnet!="binary two-mode tnet")
-    stop("Network not loaded properly")
+  # Ensure that the network conforms to the tnet standard
+  if(is.null(attributes(net)$tnet))                 net <- as.tnet(net, type="binary two-mode tnet")
+  if(attributes(net)$tnet!="binary two-mode tnet")  stop("Network not loaded properly")
+
+  if(!is.null(seed))
+    set.seed(as.integer(seed))
   #Internal function: the non-normalised coefficient
   `phi` <- function(net){
     output <- cbind(x=xlevels,num=NaN,den=NaN,y=NaN)
@@ -42,7 +44,7 @@ function(net, NR=1000, seed=NULL, projection.method="Newman", nbins=30){
   for(i in 1:NR) {
     if(i/10 == round(i/10) )
       cat(paste("Random network ", i, "/", NR, " @ ", date(), "\n", sep=""))
-    rdm.2mode <- rg_reshuffling_tm(net.2mode, seed=seed)
+    rdm.2mode <- rg_reshuffling_tm(net.2mode)
     rdm.1mode <- projecting_tm(rdm.2mode)
     rphi[,i] <- phi(rdm.1mode)
   }
