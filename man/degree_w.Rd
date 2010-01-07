@@ -15,7 +15,7 @@
 \note{ version 1.0.0 }
 \examples{
 ## Load sample data
-sample.network.1 <- rbind(
+network <- rbind(
 c(1,2,4),
 c(1,3,2),
 c(2,1,4),
@@ -30,7 +30,7 @@ c(5,6,1),
 c(6,5,1))
 
 ## Run the programme
-degree_w(sample.network.1)
+degree_w(network)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

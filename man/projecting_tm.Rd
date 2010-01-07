@@ -23,7 +23,7 @@ two.mode.net <- cbind(
 i=c(1,1,2,2,2,2,2,3,4,5,5,5,6),
 p=c(1,2,1,2,3,4,5,2,3,4,5,6,6))
 
-## Run clustering function
+## Run the function
 projecting_tm(two.mode.net, method="Newman")
 
 }

@@ -2,7 +2,7 @@
 \alias{as.tnet}
 \title{ Ensures that networks conform to the tnet stardards }
 \description{
-  Checks the networks and attaches a label. If the type parameter is not set, the network is assumed to be a binary two-mode network, a weighted one-mode network, or a longitudinal network if there are 2, 3, or 4 columns respectively.
+  Checks that a network conforms to the tnet stardards, and attaches a label. If the type parameter is not set, the network is assumed to be a binary two-mode network, a weighted one-mode network, or a longitudinal network if there are 2, 3, or 4 columns respectively.
 }
 \usage{as.tnet(net, type=NULL)}
 \arguments{

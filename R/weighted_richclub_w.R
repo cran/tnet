@@ -1,5 +1,5 @@
 `weighted_richclub_w` <-
-function(net,rich="k", reshuffle="weights", NR=100, nbins=30, seed=NULL, directed=NULL){
+function(net,rich="k", reshuffle="weights", NR=1000, nbins=30, seed=NULL, directed=NULL){
   # Ensure that the network conforms to the tnet standard
   if (is.null(attributes(net)$tnet))                      net <- as.tnet(net, type = "weighted one-mode tnet")
   if (attributes(net)$tnet != "weighted one-mode tnet")   stop("Network not loaded properly")

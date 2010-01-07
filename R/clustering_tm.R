@@ -51,15 +51,20 @@ function(net){
     paths <- merge(paths, net, sort=FALSE)
     paths <- paths[paths[,"i1"] != paths[,"i3"],]
     paths <- paths[paths[,"i2"] != paths[,"i3"],]
-    pw <- rowSums(paths[,c("w1","w2","w3","w4")])/4
-    denominator <- sum(pw)
+    pw <- data.frame(
+      bi=rep(1, nrow(paths)),
+      am=rowMeans(paths[,c("w1","w2","w3","w4")]), 
+      gm=apply(paths[,c("w1","w2","w3","w4")], 1, function(a) sqrt(sqrt(prod(a)))), 
+      ma=apply(paths[,c("w1","w2","w3","w4")], 1, max), 
+      mi=apply(paths[,c("w1","w2","w3","w4")], 1, min))
+    denominator <- colSums(pw)
     # Find which 4-paths are part of 6-cycles
     dimnames(net)[[2]] <- c("i","p","w")
     net <- net[,c("i","p")]
     paths <- paths[,c("i1","p1","p2","i3")]
     net.list <- split(net[,"p"], net[,"i"])
     index <- apply(paths, 1, function(a) {ct <- c(net.list[[as.character(a[1])]],net.list[[as.character(a[4])]]);sum(duplicated(ct[ct!=a[2] & ct!=a[3]]))>0})
-    numerator <- sum(pw[index])
+    numerator <- colSums(pw[index,])
   }
   rm(paths)
   # Fraction

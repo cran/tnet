@@ -8,7 +8,7 @@
 \arguments{
   \item{ni}{ Number of nodes in the first set }
   \item{np}{ Number of nodes in the second set }
-  \item{ties}{ Number of ties }
+  \item{ties}{ Number of ties; if this value is between 0 and 1, a random network where each tie is based on this probability will be produced }
   \item{max.weight}{ Max weight (see rg_w), if set to 1 a binary network is produced. }
   \item{seed}{ the random seed. If you want it to be non-reproducable, use NULL otherwise, use a number }
 }

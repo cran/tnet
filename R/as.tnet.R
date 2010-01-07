@@ -15,6 +15,11 @@ function(net, type=NULL){
     net <- net[!duplicated(net[,c("i","p")]),]
     if(nrow(net)!=E)
       stop("There are duplicated entries in the edgelist")
+    if(sum(is.na(suppressWarnings(as.integer(c(net[,"i"],net[,"p"])))))>0 | sum(as.integer(c(net[,"i"],net[,"p"]))==c(net[,"i"],net[,"p"]))!=2*E)
+      stop("Not all node id's are integers")
+    if(min(c(net[,"i"],net[,"p"]))<1)
+      stop("A node id's below 1 is detected. The lowest possible node id is 1.")
+
   } else if(type == "weighted two-mode tnet" & NC == 3) {
     dimnames(net)[[2]] <- c("i","p","w")
     net <- net[net[,"w"]>0,];
@@ -24,6 +29,11 @@ function(net, type=NULL){
     net <- net[!duplicated(net[,c("i","p")]),]
     if(nrow(net)!=E)
       stop("There are duplicated entries in the edgelist")
+    if(sum(is.na(suppressWarnings(as.integer(c(net[,"i"],net[,"p"])))))>0 | sum(as.integer(c(net[,"i"],net[,"p"]))==c(net[,"i"],net[,"p"]))!=2*E)
+      stop("Not all node id's are integers")
+    if(min(c(net[,"i"],net[,"p"]))<1)
+      stop("A node id's below 1 is detected. The lowest possible node id is 1.")
+
   } else if(type == "weighted one-mode tnet" & NC == 3) { 
     dimnames(net)[[2]] <- c("i","j","w")
     net <- net[net[,"i"]!=net[,"j"],];
@@ -40,12 +50,21 @@ function(net, type=NULL){
       stop("There are duplicated entries in the edgelist")
     if(sum(net[,1]<net[,2])==E | sum(net[,1]>net[,2])==E)
       warning("The network might be undirected. If this is the case, each tie should be mention twice. The symmetrise-function can be used to include reverse version of each tie.")
+    if(sum(is.na(suppressWarnings(as.integer(c(net[,"i"],net[,"j"])))))>0 | sum(as.integer(c(net[,"i"],net[,"j"]))==c(net[,"i"],net[,"j"]))!=2*E)
+      stop("Not all node id's are integers")
+    if(min(c(net[,"i"],net[,"j"]))<1)
+      stop("A node id's below 1 is detected. The lowest possible node id is 1.")
+
   } else if(type == "longitudinal tnet" & NC == 4) { 
     dimnames(net)[[2]] <- c("t","i","j","w")
     net <- net[net[,"w"]!=-1 | net[,"w"]!=1,];
     if(nrow(net)!=E)
       stop("There are weights that are not 1 or -1 in the edgelist")
     net <- net[order(net[,"i"],net[,"j"]),]
+    if(sum(is.na(suppressWarnings(as.integer(c(net[,"i"],net[,"j"])))))>0 | sum(as.integer(c(net[,"i"],net[,"j"]))==c(net[,"i"],net[,"j"]))!=2*E)
+      stop("Not all node id's are integers")
+    if(min(c(net[,"i"],net[,"j"]))<1)
+      stop("A node id's below 1 is detected. The lowest possible node id is 1.")
   } else {
     stop("Type of network not recognised\n")
   }

@@ -23,11 +23,11 @@ http://toreopsahl.com/2009/05/29/weighted-rich-club-effect-a-more-appropriate-nu
 \author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0 }
 \examples{
-## Load  data (subset)
-net <- read.table("http://opsahl.co.uk/tnet/datasets/Newman-Cond_mat_95-99-two_mode.txt", nrows=100)
+## Load  data
+data(Newman.Condmat.95.99)
 
-## Run the function
-weighted_richclub_tm(net, NR=10)
+## Run the function on a subset
+weighted_richclub_tm(Newman.Condmat.95.99.net.2mode[1:100,], NR=10)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

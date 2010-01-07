@@ -1,6 +1,7 @@
-\name{Newman.Condmat.95.99.net.2mode}
+\name{Newman.Condmat.95.99}
 \docType{data}
 \alias{Newman.Condmat.95.99.net.2mode}
+\alias{Newman.Condmat.95.99.net.1mode.wNewman}
 \title{ Newman's condmat 95-99 network (two-mode structure) }
 \description{ This is the co-authorship network of scientists based on preprints posted to Condensed Matter section of arXiv E-Print Archive between 1995 and 1999. \cr\cr
 This network can be classified as a two-mode or affiliation network since there are two types of "nodes" (authors and papers) and connections exist only between different types of nodes. An author is connected to a paper if her or his name appeared on it. \cr\cr
@@ -13,8 +14,11 @@ Note: This method has been explained in more detail in the following post: \cr
 http://toreopsahl.com/2009/05/01/projecting-two-mode-networks-onto-weighted-one-mode-networks/ \cr\cr
 This is the two-mode network.
 See http://toreopsahl.com/datasets/ }
-\usage{Newman.Condmat.95.99.net.2mode}
-\format{ A data frame with two columns. The first is the id of authors and the second is the id of papers. }
+\usage{
+Newman.Condmat.95.99.net.2mode
+Newman.Condmat.95.99.net.1mode.wNewman
+}
+\format{ The two-mode network is a data frame with two columns. The first is the id of authors and the second is the id of papers. The one-mode network is a data frame with three columns. The first two columns are ids of the authors, and the this column is the weight of the tie. This is calculated based on Newman (2001). }
 \references{ Newman, M. E. J., 2001. The structure of scientific collaboration networks. Proceedings of the National Academy of Sciences of the United States of America 98, 404-409.\cr
 See http://toreopsahl.com/datasets/ }
 \keyword{datasets}

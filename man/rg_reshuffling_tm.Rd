@@ -13,11 +13,11 @@
 \author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0}
 \examples{
-## Load  data (subset)
-net <- read.table("http://opsahl.co.uk/tnet/datasets/Newman-Cond_mat_95-99-two_mode.txt", nrows=100)
+## Load  data
+data(Newman.Condmat.95.99)
 
-## Run the function
-rg_reshuffling_tm(net, seed=1)
+## Run the function on a subset
+rg_reshuffling_tm(Newman.Condmat.95.99.net.2mode[1:100,], seed=1)
 
 
 }
