@@ -1,11 +1,11 @@
-\name{distance_w}
-\alias{distance_w}
-\title{ Distance in a weighted network }
-\description{ The shortest path length, or geodesic distance, between two nodes in a binary network is the minimum number of steps you need to make to go from one of them to the other. This distance is the quickest connection between nodes when all ties are the same. However, in a weighted network, all ties are not the same. See http://toreopsahl.com/2009/01/09/average-shortest-distance-in-weighted-networks/ for more deatails. }
-\usage{ distance_w(net, directed=NULL, gconly=TRUE, subsample=1, seed=NULL) }
+\name{distance_tm}
+\alias{distance_tm}
+\title{ Distance in a two-mode network }
+\description{ The shortest path length, or geodesic distance, between two nodes in a binary network is the minimum number of steps you need to make to go from one of them to the other. See the distance_w-function for more details. }
+\usage{ distance_tm(net, projection.method="sum", gconly=TRUE,subsample=1, seed=NULL) }
 \arguments{
   \item{net}{A weighted edgelist}
-  \item{directed}{ logical, whether the network is directed or undirected. Default is NULL, this means that the function checks whether the edgelist is directed or not.}
+  \item{projection.method}{The way the two-mode network is projected. I believe that the sum method is the best as this takes into consideration the number of events, projects etc that two individuals had contact through. In certain cases, "Newman" might be better. See the projecting_tm-function.}
   \item{gconly}{ logical, whether the function should only be calculated for the giant component. Default is TRUE.}
   \item{subsample}{Whether a only a subset of starting nodes should we used when calculating the measure. This is particularly useful when running out of memory analysing large networks. If it is set to 1, all distances are analysed. If it set to a value below one, this is roughly the proportion of starting noes that will be analysed. If it is set to an interger greater than 1, this number of starting nodes that will be analysed.}
   \item{seed}{If a subset of starting nodes is analysed, by setting this parameter, the results are reproducable.}
@@ -15,19 +15,14 @@
 \author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0}
 \examples{
-## Load sample data
-sample <- rbind(
-c(1,2,8),
-c(1,4,1),
-c(2,1,8),
-c(2,3,6),
-c(3,2,6),
-c(3,4,10),
-c(4,1,1),
-c(4,3,10))
+# Load networks
+net <- cbind(
+ i=c(1,1,2,2,2,3,3,4,5,5,6),
+ p=c(1,2,1,3,4,2,3,4,3,5,5),
+ w=c(3,5,6,1,2,6,2,1,3,1,2))
 
-## Run the programme
-distance_w(sample)
+# Run the function
+distance_tm(net)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

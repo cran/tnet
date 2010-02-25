@@ -1,11 +1,13 @@
 `distance_w` <-
-function(net,directed=NULL,gconly=TRUE){
+function(net,directed=NULL,gconly=TRUE,subsample=1, seed=NULL){
   # Ensure that the network conforms to the tnet standard
   if (is.null(attributes(net)$tnet))                      net <- as.tnet(net, type = "weighted one-mode tnet")
   if (attributes(net)$tnet != "weighted one-mode tnet")   stop("Network not loaded properly")
+  if(!is.null(seed))
+    set.seed(as.integer(seed))
 
   # Invert tie weights to get cost
-  net[,"w"] <- 1/net[,"w"]     
+  net[,"w"] <- mean(net[,"w"])/net[,"w"]     
   # Check whether the net is directed        
   if(is.null(directed))
     directed <- (nrow(symmetrise(net))!=nrow(net))
@@ -28,13 +30,26 @@ function(net,directed=NULL,gconly=TRUE){
   # Extract giant component
   gc <- nodes(g)
   if(gconly) {
-    gc <- connComp(g)
+    if(directed) {
+      gc <- strongComp(g)
+    } else {
+      gc <- connComp(g)
+    }
     gc <- gc[[which.max(sapply(gc,length))]]
     g <- subGraph(gc, g)
   }
+  # Subsample
+  if(subsample != 1) {
+    if(subsample < 1) {
+      gc <- gc[sample.int(length(gc), round(subsample*length(gc)))]
+    } else {
+      gc <- gc[sample.int(length(gc), as.integer(subsample))]
+    }
+    gc <- gc[order(gc)]
+  }
   # Calculate the distances
   d <- t(sapply(gc, function(a) dijkstra.sp(g, start=a)$distances))
-  diag(d) <- NA
+  d[d==0] <- NA
   attributes(d)$nodes <- as.integer(gc)
   return(d)
 }

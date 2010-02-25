@@ -31,7 +31,10 @@ function(net,option="weights",directed=NULL,seed=NULL){
     net.i <- get.edgelist(net.i)
     net[,1:2] <- net.i[order(net.i[,1], net.i[,2]),]
     if(directed) {
-      net[,3] <- unlist(tapply(net[,3], cumsum(!duplicated(net[,1])), function(a) sample(a)))
+      sample1 <- function(x) 
+        if(length(x) == 1) { x
+        } else sample(x)
+      net[,3] <- unlist(tapply(net[,3], cumsum(!duplicated(net[,1])), function(a) sample1(a)))
     } else {
       net[,3] <- sample(net[,"w"]) 
       net <- rbind(net, cbind(i=net[,2], j=net[,1], w=net[,3]))

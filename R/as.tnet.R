@@ -7,7 +7,26 @@ function(net, type=NULL){
       "2" = "binary two-mode tnet",
       "3" = "weighted one-mode tnet",
       "4" = "longitudinal tnet")
-    warning(paste("Data assumed to be", type))
+    if(is.null(type) & NC == E)
+      type <- "weighted one-mode tnet"
+    if(is.null(type) & sum(net==1 | net==0)==NC*E)
+      type <- "binary two-mode tnet"
+    if(is.null(type) & sum(net!=1)>0)
+      type <- "weighted two-mode tnet"
+    if(is.null(type))
+      stop("Could not determine the type of network. Specify the type-parameter.")
+    warning(paste("Data assumed to be", type, "(if this is not correct, specify type)"))
+  }
+  if(NC>4) {
+    if(type == "binary two-mode tnet") {
+      net <- which(net>0, arr.ind=TRUE)
+    } else if(type == "weighted two-mode tnet" | type == "weighted one-mode tnet") {
+      net <- cbind(which(net>0, arr.ind=TRUE), net[net>0])
+    } else {
+      stop("Issues converting matrix format to edgelist. Check manual for datatypes.")
+    }
+    NC <- ncol(net)
+    E <- nrow(net)
   }
   if(type == "binary two-mode tnet" & NC == 2) {
     dimnames(net)[[2]] <- c("i","p")

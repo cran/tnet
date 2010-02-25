@@ -1,5 +1,5 @@
 `clustering_tm` <-
-function(net){
+function(net,subsample=1,seed=NULL){
   # Ensure that the network conforms to the tnet standard
   if(is.null(attributes(net)$tnet)) {
     if(ncol(net)==3) {
@@ -10,9 +10,21 @@ function(net){
   }
   if(attributes(net)$tnet!="binary two-mode tnet" & attributes(net)$tnet!="weighted two-mode tnet")
     stop("Network not loaded properly")
+  if(!is.null(seed))
+    set.seed(as.integer(seed))
+
+  # 1-paths i1+p1
+  paths <- net
+  if(subsample!=1) {
+    if(subsample<1) {
+      index <- sample.int(nrow(paths), round(nrow(paths)*subsample))
+    } else {
+      index <- sample.int(nrow(paths), as.integer(subsample))
+    }
+    index <- index[order(index)]
+    paths <- paths[index,]
+  }
   if(attributes(net)$tnet=="binary two-mode tnet")  {
-    # 1-paths i1+p1
-    paths <- net
     dimnames(paths)[[2]] <- c("i1","p1")
     # 2-paths i1+p1+i2
     dimnames(net)[[2]] <- c("i2","p1")
@@ -34,9 +46,6 @@ function(net){
     net.list <- split(net[,"p"], net[,"i"])
     numerator <- sum(apply(paths, 1, function(a) {ct <- c(net.list[[as.character(a[1])]],net.list[[as.character(a[4])]]); return(sum(duplicated(ct[ct!=a[2] & ct!=a[3]]))>0)}))
   } else {
-    net <- data.frame(i=as.integer(net[,1]), p=as.integer(net[,2]), w=net[,3])
-    # 1-paths i1+p1
-    paths <- net
     dimnames(paths)[[2]] <- c("i1","p1","w1")
     # 2-paths i1+p1+i2
     dimnames(net)[[2]] <- c("i2","p1","w2")

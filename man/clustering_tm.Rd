@@ -3,9 +3,11 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Redefined clusering coefficient for two-mode networks }
 \description{ This function calculates the two-mode clusering coefficient as proposed by Opsahl, T., 2009. Clustering in binary and weighted two-mode networks. Two-mode conference in Amsterdam. }
-\usage{clustering_tm(net)}
+\usage{clustering_tm(net, subsample=1, seed=NULL)}
 \arguments{
   \item{net}{A binary or weighted two-mode edgelist}
+  \item{subsample}{Whether a only a subset of 4-paths should we used when calculating the measure. This is particularly useful when running out of memory analysing large networks. If it is set to 1, all the 4-paths are analysed. If it set to a value below one, this is roughly the proportion of 4-paths that will be analysed. If it is set to an interger greater than 1, this number of ties that form the first part of a 4-path that will be analysed.}
+  \item{seed}{If a subset of 4-paths is analysed, by setting this parameter, the results are reproducable.}
 }
 \value{Returns the outcome of the equation presented in the paper}
 \references{ Opsahl, T., 2009. Clustering in binary and weighted two-mode networks. Two-mode conference in Amsterdam. }
