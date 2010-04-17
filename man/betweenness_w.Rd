@@ -3,11 +3,12 @@
 \title{ Betweenness centrality in a weighted network }
 \description{ This function calculates betweenness scores for nodes in a weighted network based on the distance_w. \cr
 Note: This algorithm relies on the RBGL package's implementation of the boost C++-library. This implementation includes Brandes' (2001) algorithm, and finds multiple paths if they have exactly the same distance. For example, if one path is found over the direct tie with a weight of 1 (distance = 1/1 = 1) and a second path is through an intermediary node with two ties with weights of 2 (distance = 1/2 + 1/2 = 1), the two paths have exactly the same distance. However, if there is a third path through two intermediaries with three ties with weights of 3 (distance = 1/3 + 1/3 + 1/3), computers read these values as 0.3333333 and the sum of these values is 0.9999999. Thus, it is not exactly equal to the distance of the other two paths. In fact, this path is considered shorter than the others (0.9999999 < 1).}
-\usage{ betweenness_w(net, directed=NULL) }
+\usage{ betweenness_w(net, directed=NULL, alpha=1) }
 
 \arguments{
   \item{net}{ A weighted edgelist }
   \item{directed}{ logical, whether the network is directed or undirected. Default is NULL, this means that the function checks whether the edgelist is directed or not.}
+  \item{alpha}{ sets the alpha parameter in the generalised measures from Opsahl, T., Agneessens, F., Skvoretz, J., 2010. Node Centrality in Weighted Networks: Generalizing Degree and Shortest Paths. Social Networks. }
 }
 \value{ Returns a data.frame with two columns: the first containts the node ids of all the nodes in the edgelist, and the second containts the corresponding betweenness scores. }
 \references{ http://toreopsahl.com/2009/02/20/betweenness-in-weighted-networks/ }

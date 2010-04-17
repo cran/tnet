@@ -3,11 +3,12 @@
 \title{ Degree centrality in a weighted network }
 \description{ This function calculates two degree measures: the number of contacts that a node is connected to, and the sum of weights on ties originating from a node (out-strength). To calculate the reverse (in-degree, in-strength), specify type="in".
 }
-\usage{degree_w(net,measure=c("degree","output"), type="out")}
+\usage{degree_w(net,measure=c("degree","output"), type="out", alpha=1)}
 \arguments{
   \item{net}{A weighted edgelist}
   \item{measure}{ specifies which measures should be calculated }
   \item{type}{ shall out- or in-measures be calculated? Default is out. For undirected networks, this setting is irrelevant, but must be specified. }
+  \item{alpha}{ sets the alpha parameter in the generalised measures from Opsahl, T., Agneessens, F., Skvoretz, J., 2010. Node Centrality in Weighted Networks: Generalizing Degree and Shortest Paths. Social Networks. }
 }
 \value{ Returns a data.frame with two or three columns: the first containts the node ids of all the nodes in the edgelist, and the second and/or third containt the corresponding degree and/or strength scores. }
 \references{ http://toreopsahl.com/2008/11/28/network-weighted-network/ }

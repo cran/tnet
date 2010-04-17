@@ -6,7 +6,7 @@
 }
 \usage{as.tnet(net, type=NULL)}
 \arguments{
-  \item{net}{A network in an edgelist. It can be a weighted one-mode network, a binary two-mode network, a weighted two-mode netork, or a longitudinal network.}
+  \item{net}{A network in an edgelist or matrix format. It can be a weighted one-mode network, a binary two-mode network, a weighted two-mode netork, or a longitudinal network. If the data-object has two-columns, it is assumed to be a binary two-mode network; three columns, weighted one-mode network; four columns, longitudinal; five or more and the same number of rows and columns, weighted one-mode network; five or more and --not-- the same number of rows and columns, it is assumed to be a two-mode network. }
   \item{type}{If you would like to specify the type of network. This could be "weighted one-mode tnet", "binary two-mode tnet", "weighted two-mode tnet", or "longitudinal tnet". }
 }
 \value{Returns the network with an attached lable.}

@@ -8,12 +8,12 @@
 \tabular{ll}{
 Package: \tab tnet\cr
 Type: \tab Package\cr
-Version: \tab 2.5\cr
-Date: \tab 2010-02-25 }
+Version: \tab 2.6\cr
+Date: \tab 2010-04-17 }
 
 This package allows for analysis of weighted network, two-mode network, and longitudinal network datasets. More information is available on http://opsahl.co.uk/tnet/ and http://toreopsahl.com
 
-It reads three forms of data structures:
+It utlises three forms of data structures (it can automatically convert matrices etc into these formats, see the as.tnet-function):
 
 1) simple weighted data in the following format (vertex.id.of.creator vertex.id.of.target weight.of.tie): \cr
 1 2 4\cr
