@@ -8,8 +8,8 @@
 \tabular{ll}{
 Package: \tab tnet\cr
 Type: \tab Package\cr
-Version: \tab 2.6\cr
-Date: \tab 2010-04-17 }
+Version: \tab 2.7\cr
+Date: \tab 2010-06-07 }
 
 This package allows for analysis of weighted network, two-mode network, and longitudinal network datasets. More information is available on http://opsahl.co.uk/tnet/ and http://toreopsahl.com
 
@@ -33,6 +33,8 @@ Attribute files are read as follows:\cr
 0 3 2 \cr
 1 3 3 \cr
 where the first row refers to vertex id 1, the second row to vertex id 2, and so on. The first column refers to the first attributes, second column to the second attribute and so on.
+
+A big thank you to the igraph guys as this package relies on their work for many of the more computational tasks!
 }
 \references{ http://opsahl.co.uk/tnet/ }
 \author{ Tore Opsahl; http://toreopsahl.com }

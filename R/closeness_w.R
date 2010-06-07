@@ -1,5 +1,5 @@
 `closeness_w` <-
-function(net, directed = NULL, precomp.dist = NULL, alpha=1){
+function(net, directed = NULL, gconly = TRUE, precomp.dist = NULL, alpha=1){
   # Ensure that the network conforms to the tnet standard
   if (is.null(attributes(net)$tnet))                      net <- as.tnet(net, type = "weighted one-mode tnet")
   if (attributes(net)$tnet != "weighted one-mode tnet")   stop("Network not loaded properly")
@@ -11,12 +11,22 @@ function(net, directed = NULL, precomp.dist = NULL, alpha=1){
   if(is.null(precomp.dist)) {
     if(is.null(directed) & is.null(precomp.dist)) 
       directed <- (nrow(symmetrise(net)) != nrow(net))
-    precomp.dist <- distance_w(net = net, directed = directed)
+    precomp.dist <- distance_w(net = net, directed = directed, gconly = gconly)
   }
-  # Sum up distances to all other nodes to get farness
-  out <- cbind(node = attributes(precomp.dist)$nodes, closeness = rowSums(precomp.dist, na.rm = TRUE))
-  # Invert to get closeness
-  out[, "closeness"] <- 1/out[, "closeness"]
+  if(gconly) {
+    # Sum up distances to all other nodes to get farness
+    out <- cbind(node = attributes(precomp.dist)$nodes, closeness = rowSums(precomp.dist, na.rm = TRUE))
+    # Invert to get closeness
+    out[, "closeness"] <- 1/out[, "closeness"]
+  } else {
+    # Invert distances
+    precomp.dist <- 1/precomp.dist
+    # Sum up distances to all other nodes to get farness
+    out <- cbind(node = attributes(precomp.dist)$nodes, 
+      closeness = rowSums(precomp.dist, na.rm = TRUE),
+      n.closeness=NaN)
+      out[,"n.closeness"] <- out[,"closeness"]/(nrow(out)-1)
+  }
   # Return
   return(out)
 }

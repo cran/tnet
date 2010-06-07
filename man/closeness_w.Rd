@@ -2,11 +2,12 @@
 \alias{closeness_w}
 \title{ Closeness centrality in a weighted network }
 \description{ This function calculates closeness scores for nodes in a weighted network based on the distance\_w. }
-\usage{ closeness_w(net, directed=NULL, precomp.dist=NULL, alpha=1) }
+\usage{ closeness_w(net, directed=NULL, gconly=TRUE, precomp.dist=NULL, alpha=1) }
 
 \arguments{
   \item{net}{ A weighted edgelist }
   \item{directed}{ Logical: whether the edgelist is directed or undirected. Default is NULL, then the function detects this parameter. }
+  \item{gconly}{ Logical: whether to calculate closeness only on the main component (traditional closeness). Default is TRUE. }
   \item{precomp.dist}{ If you have already computed the distance matrix using distance\_w, you can enter the name of the matrix object here. }
   \item{alpha}{ sets the alpha parameter in the generalised measures from Opsahl, T., Agneessens, F., Skvoretz, J., 2010. Node Centrality in Weighted Networks: Generalizing Degree and Shortest Paths. Social Networks. }
 }

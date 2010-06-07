@@ -1,55 +1,30 @@
 `distance_w` <-
-function(net,directed=NULL,gconly=TRUE,subsample=1, seed=NULL){
-  # Ensure that the network conforms to the tnet standard
-  if (is.null(attributes(net)$tnet))                      net <- as.tnet(net, type = "weighted one-mode tnet")
-  if (attributes(net)$tnet != "weighted one-mode tnet")   stop("Network not loaded properly")
-  if(!is.null(seed))
+function(net, directed = NULL, gconly = TRUE, subsample = 1, seed = NULL){
+  if (is.null(attributes(net)$tnet)) 
+    net <- as.tnet(net, type = "weighted one-mode tnet")
+  if (attributes(net)$tnet != "weighted one-mode tnet") 
+    stop("Network not loaded properly")
+  if (!is.null(seed)) 
     set.seed(as.integer(seed))
-
-  # Invert tie weights to get cost
-  net[,"w"] <- mean(net[,"w"])/net[,"w"]     
-  # Check whether the net is directed        
-  if(is.null(directed))
-    directed <- (nrow(symmetrise(net))!=nrow(net))
-  # Number of nodes
-  n <- max(net[,c("i","j")])                 
-  # Define distance matrix
-  d <- matrix(data=Inf, ncol=n, nrow=n)   
-  # Convert the data so that the RBGL package can read it
-  library(RBGL);
-  V <- as.character(1:n);
-  E <- vector("list", length=n);
-  names(E) <- V;
-  for(i in 1:n)
-    E[[i]] <- list(edges=net[net[,"i"]==i,"j"], weights=net[net[,"i"]==i,"w"])
+  net[, "w"] <- mean(net[, "w"])/net[, "w"]
+  if (is.null(directed)) 
+    directed <- (nrow(symmetrise(net)) != nrow(net))
+  library(igraph)
+  net[,c("i","j")] <- net[,c("i","j")]-1
   if(directed) {
-    g <- new("graphNEL", nodes=V, edgeL=E, edgemode="directed")
+    g <- graph.edgelist(el=as.matrix(net[,c("i","j")]), directed=TRUE)
+    g <- set.edge.attribute(g, "tnetw", value=net[,"w"])
   } else {
-    g <- new("graphNEL", nodes=V, edgeL=E, edgemode="undirected")
+    g <- graph.edgelist(el=as.matrix(net[net[,"i"]<net[,"j"],c("i","j")]), directed=FALSE)
+    g <- set.edge.attribute(g, "tnetw", value=net[net[,"i"]<net[,"j"],"w"])
   }
-  # Extract giant component
-  gc <- nodes(g)
   if(gconly) {
-    if(directed) {
-      gc <- strongComp(g)
-    } else {
-      gc <- connComp(g)
-    }
-    gc <- gc[[which.max(sapply(gc,length))]]
-    g <- subGraph(gc, g)
+    gc <- clusters(g, mode="strong")
+    gc <- which(gc$membership==names(sort(-table(gc$membership)))[1])
+    g <- subgraph(g, gc-1)
   }
-  # Subsample
-  if(subsample != 1) {
-    if(subsample < 1) {
-      gc <- gc[sample.int(length(gc), round(subsample*length(gc)))]
-    } else {
-      gc <- gc[sample.int(length(gc), as.integer(subsample))]
-    }
-    gc <- gc[order(gc)]
-  }
-  # Calculate the distances
-  d <- t(sapply(gc, function(a) dijkstra.sp(g, start=a)$distances))
-  d[d==0] <- NA
-  attributes(d)$nodes <- as.integer(gc)
+  d <- shortest.paths(g, weights=get.edge.attribute(g, "tnetw"))
+  diag(d) <- NA
+  attributes(d)$nodes <- as.integer(V(g)+1)
   return(d)
 }

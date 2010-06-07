@@ -8,27 +8,35 @@ function(net, directed = NULL, alpha=1){
   if(is.null(directed)) 
     directed <- (nrow(symmetrise(net)) != nrow(net))
   
-  # Remove duplicated ties if undirected to conform with RBGL
-  if(!directed) 
-    net <- net[net[, 1] < net[, 2], ]
-
-  # Number of nodes and edges 
-  N <- as.integer(max(c(net[, 1], net[, 2])))
-  E <- as.integer(nrow(net))
-
-  # Elements for C-function
-  EM <- as.integer(t(net[,1:2]) - 1)
-  EW <- as.numeric(1/net[,3])^alpha
-
-  # Run C function from RBGL
-  library(RBGL)
-  ans <- .Call("BGL_brandes_betweenness_centrality", N, E, EM, EW, PACKAGE = "RBGL")
-
-  # Return output
-  out <- list()
-  out[[1]] <- cbind(node = 1:N, betweenness = as.numeric(ans[[1]]))
-  out[[2]] <- cbind(t(matrix(EM, nrow = 2, ncol = E)) + 1, t(ans[[2]]))
+  # Load, prepare for, and use igraph
+  library(igraph)
+  net[,c("i","j")] <- net[,c("i","j")]-1
+  net[,"w"] <- (1/net[,"w"])^alpha
+  if(directed) {
+    g <- graph.edgelist(el=as.matrix(net[,c("i","j")]), directed=TRUE)
+    g <- set.edge.attribute(g, "weight", value=net[,"w"])
+  } else {
+    g <- graph.edgelist(el=as.matrix(net[net[,"i"]<net[,"j"],c("i","j")]), directed=FALSE)
+    g <- set.edge.attribute(g, "weight", value=net[net[,"i"]<net[,"j"],"w"])
+  }
+  N <- length(V(g))
+  out <- cbind(node = 1:N, betweenness = 0)
+  for(i in 0:(N-1)) {
+    if(directed) {
+      paths <- get.shortest.paths(g, from=i)
+    } else {
+      paths <- get.shortest.paths(g, from=i, to=V(g)[V(g)>i])
+    }
+    tmp <- which(sapply(paths, length)>2)
+    if(length(tmp)>0) {
+      paths <- paths[tmp]
+      for(j in 1:length(paths))
+        paths[[j]] <- paths[[j]][2:(length(paths[[j]])-1)]
+      paths <- unlist(paths)+1
+      for(j in paths)
+        out[j,"betweenness"] <- out[j,"betweenness"]+1
+    }
+  }
   return(out)                       
 }
-
 
