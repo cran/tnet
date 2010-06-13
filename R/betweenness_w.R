@@ -23,7 +23,7 @@ function(net, directed = NULL, alpha=1){
   out <- cbind(node = 1:N, betweenness = 0)
   for(i in 0:(N-1)) {
     if(directed) {
-      paths <- get.shortest.paths(g, from=i)
+      paths <- suppressWarnings(get.shortest.paths(g, from=i, mode="out"))
     } else {
       paths <- get.shortest.paths(g, from=i, to=V(g)[V(g)>i])
     }

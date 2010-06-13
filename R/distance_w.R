@@ -23,7 +23,7 @@ function(net, directed = NULL, gconly = TRUE, subsample = 1, seed = NULL){
     gc <- which(gc$membership==names(sort(-table(gc$membership)))[1])
     g <- subgraph(g, gc-1)
   }
-  d <- shortest.paths(g, weights=get.edge.attribute(g, "tnetw"))
+  d <- shortest.paths(g, mode="out", weights=get.edge.attribute(g, "tnetw"))
   diag(d) <- NA
   attributes(d)$nodes <- as.integer(V(g)+1)
   return(d)

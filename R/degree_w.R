@@ -26,7 +26,7 @@ function(net, measure = c("degree", "output"), type = "out", alpha=1){
     k.list[,"alpha"] <- k.list[,"degree"]*((k.list[,"output"]/k.list[,"degree"])^alpha)
   # Add rows to the output object if isolates exists
   if(max(net[,c("i", "j")]) != nrow(k.list)) {
-    k.list <- rbind(k.list, cbind(1:max(net[, c("i", "j")]), 0, 0))
+    k.list <- rbind(k.list, cbind(1:max(net[, c("i", "j")]), 0, 0, 0))
     k.list <- k.list[order(k.list[, "node"]), ]
     k.list <- k.list[!duplicated(k.list[, "node"]), ]
   }
