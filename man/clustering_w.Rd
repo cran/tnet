@@ -2,7 +2,8 @@
 \alias{clustering_w}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Generalised clusering coefficient }
-\description{ This function calculates the generalised clusering coefficient as proposed by Opsahl, T., Panzarasa, P., 2009. Clustering in weighted networks. Social Networks 31 (2), 155-163, doi: 10.1016/j.socnet.2009.02.002 }
+\description{ This function calculates the generalised clusering coefficient as proposed by Opsahl, T., Panzarasa, P., 2009. Clustering in weighted networks. Social Networks 31 (2), 155-163, doi: 10.1016/j.socnet.2009.02.002\cr
+Note: If you are having problems with this function (i.e., run out of memory), there is a much more memory efficient c++ function. However, this function is not fully integrated in R, and requires a few extra steps.  }
 \usage{clustering_w(net, measure = "mi", subsample=1, seed=NULL)}
 \arguments{
   \item{net}{A weighted edgelist}
@@ -26,7 +27,7 @@ http://toreopsahl.com/2009/04/03/article-clustering-in-weighted-networks/ }
 ## Generate a random graph
 #density: 300/(100*99)=0.03030303; 
 #this should be average from random samples
-rg <- rg_w(nodes=100,arcs=300,max.weight=10)
+rg <- rg_w(nodes=100,arcs=300,weights=1:10)
 
 ## Run clustering function
 clustering_w(rg)

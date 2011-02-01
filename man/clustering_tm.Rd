@@ -2,7 +2,8 @@
 \alias{clustering_tm}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Redefined clusering coefficient for two-mode networks }
-\description{ This function calculates the two-mode clusering coefficient as proposed by Opsahl, T., 2009. Clustering in binary and weighted two-mode networks. Two-mode conference in Amsterdam. }
+\description{ This function calculates the two-mode clusering coefficient as proposed by Opsahl, T., 2009. Clustering in binary and weighted two-mode networks. Two-mode conference in Amsterdam.\cr
+Note: If you are having problems with this function (i.e., run out of memory), there is a much more memory efficient c++ function. However, this function is not fully integrated in R, and requires a few extra steps. }
 \usage{clustering_tm(net, subsample=1, seed=NULL)}
 \arguments{
   \item{net}{A binary or weighted two-mode edgelist}

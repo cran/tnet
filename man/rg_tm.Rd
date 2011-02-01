@@ -4,12 +4,12 @@
 \description{
   Creates random binary and weighted two-mode networks
 }
-\usage{rg_tm(ni=100,np=100,ties=300,max.weight=1,seed=NULL)}
+\usage{rg_tm(ni=100,np=100,ties=300,weights=1,seed=NULL)}
 \arguments{
   \item{ni}{ Number of nodes in the first set }
   \item{np}{ Number of nodes in the second set }
   \item{ties}{ Number of ties; if this value is between 0 and 1, a random network where each tie is based on this probability will be produced }
-  \item{max.weight}{ Max weight (see rg_w), if set to 1 a binary network is produced. }
+  \item{weights}{ A tie weight vector to be randomly sampled. }
   \item{seed}{ the random seed. If you want it to be non-reproducable, use NULL otherwise, use a number }
 }
 \value{Returns a random two-mode network }
@@ -18,7 +18,7 @@
 \note{ version 1.0.0 }
 \examples{
 ## Run the programme
-rg_tm(ni=10,np=10,ties=20,max.weight=1,seed=NULL)
+rg_tm(ni=10,np=10,ties=20)
 
 }
 

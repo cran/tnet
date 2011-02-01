@@ -84,6 +84,18 @@ function(net, type=NULL){
       stop("Not all node id's are integers")
     if(min(c(net[,"i"],net[,"j"]))<1)
       stop("A node id's below 1 is detected. The lowest possible node id is 1.")
+    N <- length(unique(c(net[,"i"],net[,"j"])))
+    if(sum(net[,"i"]==net[,"j"] & net[,"w"]==1) == 0) {
+      warning("Adding node joining data")
+      tmp <- rbind(data.frame(t=net[,"t"], n=net[,"i"]), data.frame(t=net[,"t"], n=net[,"j"])) 
+      tmp <- tmp[order(tmp[,"t"]),]
+      tmp <- tmp[!duplicated(tmp[,"n"]),]
+      tmp <- data.frame(t=tmp[,"t"], i=tmp[,"n"], j=tmp[,"n"], w=1)
+      net <- rbind(tmp, net)
+      net <- net[order(net[,"t"]),]
+    }
+    if(sum(net[,"i"]==net[,"j"] & net[,"w"]==1) != N)
+      stop("Problem with node joining data")
   } else {
     stop("Type of network not recognised\n")
   }

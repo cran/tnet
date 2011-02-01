@@ -1,22 +1,23 @@
+# RG TM more memeory efficient
 `rg_tm` <-
-function(ni=100,np=100,ties=300,max.weight=1,seed=NULL){
-  #If seed is set, set if formally
-  if (!is.null(seed))
+function (ni = 100, np = 100, ties = 300, weights = 1, seed = NULL) {
+  if (!is.null(seed)) 
     set.seed(as.integer(seed))
-  if(ties > 1) {
-    #Create random edgelist object with 50% more ties than needed
-    net <- data.frame(i=sample(1:ni, (ties*1.5), replace=TRUE), 
-                      p=sample(1:np, (ties*1.5), replace=TRUE))
-    #Remove duplicated entries
-    net <- net[!duplicated(net[,1:2]),]
-    net <- net[1:ties,]
+  if (ties > 1) {
+    net <- data.frame(i = sample(1:ni, (ties * 1.5), replace = TRUE), p = sample(1:np, (ties * 1.5), replace = TRUE))
+    net <- net[!duplicated(net[, 1:2]), ]
+    net <- net[1:ties, ]
   } else {
-    # Create a random edgelist object based on probabilities
-    net <- which(matrix(data=runif(ni*np), nrow=ni, ncol=np)<ties, arr.ind=TRUE)
+    net <- runif(ni * np)
+    net <- net <= ties
+    net <- matrix(data = net, nrow = ni, ncol = np)
+    net <- which(net, arr.ind = TRUE)
   }
-  if(max.weight==1) {
-    return(as.tnet(net[,1:2], type="binary two-mode tnet"))
+  if(length(weights)==1 & weights[1] == 1) {
+    return(as.tnet(net[, 1:2], type = "binary two-mode tnet"))
   } else {
-    return(as.tnet(data.frame(net, w=sample(1:max.weight, nrow(net), replace=TRUE)), type="weighted two-mode tnet"))
+    net <- data.frame(net, w = sample(weights, nrow(net), replace = TRUE))
+    net <- as.tnet(net, type = "weighted two-mode tnet")
+    return(net)
   }
 }
