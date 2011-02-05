@@ -1,4 +1,4 @@
-`longitudinal_data_to_edgelist` <-
+`as.static.tnet` <-
 function(ld){
   #name columns
   dimnames(ld)[[2]]<-c("t","i","j","w")
@@ -15,6 +15,8 @@ function(ld){
   dimnames(net)[[2]]<-c("i","j","w")
   #find weights of ties
   net[,"w"] <- tapply(ld[,"w"], cumsum(index), sum)
+  # Remove w<=0
+  net <- net[net[,"w"]>0,]
   row.names(net)<-NULL
-  return(net)
+  return(as.tnet(net,type="weighted one-mode tnet"))
 }

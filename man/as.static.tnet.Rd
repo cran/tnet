@@ -1,10 +1,10 @@
-\name{longitudinal_data_to_edgelist}
-\alias{longitudinal_data_to_edgelist}
+\name{as.static.tnet}
+\alias{as.static.tnet}
 \title{ Transform longitudinal data format to edgelist format }
 \description{
   This programme transform a data in the lognitudinal format to the edgelist format
 }
-\usage{longitudinal_data_to_edgelist(ld)}
+\usage{as.static.tnet(ld)}
 \arguments{
   \item{ld}{Data in the longitudinal format}
 }
@@ -27,7 +27,7 @@ w <- c(1,1,1,1,1,-1,1,1);
 sample <- data.frame(t, i, j, w);
 
 ## Run the programme
-longitudinal_data_to_edgelist(sample)
+as.static.tnet(sample)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

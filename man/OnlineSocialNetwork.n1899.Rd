@@ -11,7 +11,8 @@ This network is the Online Social Network-dataset used in my Ph.D. thesis. This 
 OnlineSocialNetwork.n1899.net
 OnlineSocialNetwork.n1899.lnet
 }
-\format{ A data frame with three columns. The first is the id of the sender; the second is the id of the receiver; and the third is the weight of the tie. }
+\format{ OnlineSocialNetwork.n1899.net: A data frame with three columns. The first is the id of the sender; the second is the id of the receiver; and the third is the weight of the tie.\cr
+OnlineSocialNetwork.n1899.lnet: A data frame with four columns. The first is the timestamp, the second is the id of the sender; the third is the id of the receiver; and the fourth is the weight of the tie (always 1).}
 \references{ Opsahl, T., Panzarasa, P., 2009. Clustering in weighted networks. Social Networks 31 (2), 155-163, doi: 10.1016/j.socnet.2009.02.002 \cr
 http://toreopsahl.com/datasets/}
 \author{ Tore Opsahl; http://toreopsahl.com }

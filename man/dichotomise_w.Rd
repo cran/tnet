@@ -1,12 +1,12 @@
-\name{dichotomise}
-\alias{dichotomise}
-\title{ Dichotomise a weighted network into a binary network }
+\name{dichotomise_w}
+\alias{dichotomise_w}
+\title{ Dichotomise a weighted one-mode network into a binary one-mode network }
 \description{
-  The dichotomise function creates a binary network from a weighted edgelist.
+  The dichotomise function creates a binary one-mode network from a weighted edgelist.
 }
-\usage{dichotomise(net,GT=0)}
+\usage{dichotomise_w(net,GT=0)}
 \arguments{
-  \item{net}{A weighted edgelist}
+  \item{net}{A weighted one-mode edgelist}
   \item{GT}{ the cut-off parameter. Default is set to 0, so edges/arcs with a weight greater than 0 is set to 1. }
 }
 \value{Returns the edgelist with edges below the cut-off removed, and all weights equal to 1.}
@@ -30,7 +30,7 @@ c(5,6,1),
 c(6,5,1))
 
 ## Run the programme
-dichotomise(sample, GT=2)
+dichotomise_w(sample, GT=2)
 
 }
 

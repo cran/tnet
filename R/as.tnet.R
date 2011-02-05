@@ -76,6 +76,7 @@ function(net, type=NULL){
 
   } else if(type == "longitudinal tnet" & NC == 4) { 
     dimnames(net)[[2]] <- c("t","i","j","w")
+
     net <- net[net[,"w"]!=-1 | net[,"w"]!=1,];
     if(nrow(net)!=E)
       stop("There are weights that are not 1 or -1 in the edgelist")
@@ -96,6 +97,12 @@ function(net, type=NULL){
     }
     if(sum(net[,"i"]==net[,"j"] & net[,"w"]==1) != N)
       stop("Problem with node joining data")
+    if(class(net[,"t"])[1]!="POSIXct") {
+      if(class(net[,"t"])!="character") {
+        net[,"t"] <- as.character(net[,"t"])
+        net[,"t"] <- as.POSIXct(net[,"t"])
+      }
+    }
   } else {
     stop("Type of network not recognised\n")
   }
