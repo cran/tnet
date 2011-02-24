@@ -1,4 +1,4 @@
-`clustering_tm_local` <-
+`clustering_local_tm` <-
 function(net){
   # Ensure that the network conforms to the tnet standard
   if(is.null(attributes(net)$tnet)) {

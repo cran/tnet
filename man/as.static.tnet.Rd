@@ -1,14 +1,14 @@
 \name{as.static.tnet}
 \alias{as.static.tnet}
-\title{ Transform longitudinal data format to edgelist format }
+\title{ Transform a longitudinal network to a static edgelist network }
 \description{
-  This programme transform a data in the lognitudinal format to the edgelist format
+  This function transforms a longitudinal network to a static edgelist
 }
 \usage{as.static.tnet(ld)}
 \arguments{
-  \item{ld}{Data in the longitudinal format}
+  \item{ld}{ Longitudinal network }
 }
-\value{Returns the data in a weighted edgelist format.}
+\value{Returns the data in an edgelist format.}
 \references{ tore@opsahl.co.uk }
 \author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0}

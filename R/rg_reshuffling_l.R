@@ -1,4 +1,4 @@
-`rg_l` <-
+`rg_reshuffling_l` <-
 function(net,keep.i=FALSE,keep.j=FALSE,seed=NULL){
   if(keep.i & keep.j)
     stop("If you keep both the i and j column, you are not randomising anything!")

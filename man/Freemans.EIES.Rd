@@ -18,7 +18,7 @@ Freemans.EIES.node.Name.n32
 Freemans.EIES.node.Citations.n32
 Freemans.EIES.node.Discipline.n32
 }
-\format{ The networks are data frames with three columns. The first is the id of the sender; the second is the id of the receiver; and the third is the weight of the tie. The attributes are vectors. }
+\format{ The networks are data frames with three columns. The first column is the id of the sender, the second column is the id of the receiver; and the third column is the weight of the tie. The attributes are vectors. }
 \references{ Freeman, S.C., Freeman, L.C., 1979. The networkers network: A study of the impact of a new communications medium on sociometric structure. Social Science Research Reports 46. University of California, Irvine, CA.\cr
 See http://toreopsahl.com/datasets/ }
 \keyword{datasets}

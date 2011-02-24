@@ -10,7 +10,7 @@ function(net, directed = NULL, gconly = TRUE, precomp.dist = NULL, alpha=1){
   # Compute distance matrix                
   if(is.null(precomp.dist)) {
     if(is.null(directed) & is.null(precomp.dist)) 
-      directed <- (nrow(symmetrise(net)) != nrow(net))
+      directed <- (nrow(symmetrise_w(net)) != nrow(net))
     precomp.dist <- distance_w(net = net, directed = directed, gconly = gconly)
   }
   if(gconly) {

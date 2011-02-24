@@ -4,10 +4,10 @@
 \description{ This function calculates two degree measures: the number of contacts that a node is connected to, and the sum of weights on ties originating from a node (strength). }
 \usage{degree_tm(net,measure=c("degree","output"))}
 \arguments{
-  \item{net}{A two-mode edgelist}
+  \item{net}{A two-mode network }
   \item{measure}{ specifies which measures should be calculated }
 }
-\value{ Returns a data.frame with two or three columns: the first containts the node ids of all the nodes in the edgelist, and the second and/or third containt the corresponding degree and/or strength scores. }
+\value{ Returns a data.frame with two or three columns: the first column contains the nodes' ids, and the remaining columns contain the scores of the measures specified in the measure-parameter. }
 \references{ http://toreopsahl.com/blog/ }
 \author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0 }

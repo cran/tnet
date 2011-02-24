@@ -1,4 +1,4 @@
-`weighted_richclub_w_local` <-
+`weighted_richclub_local_w` <-
 function(net,prominence){
   # Ensure that the network conforms to the tnet standard
   if (is.null(attributes(net)$tnet))                      net <- as.tnet(net, type = "weighted one-mode tnet")

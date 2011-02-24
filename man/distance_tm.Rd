@@ -4,8 +4,8 @@
 \description{ The shortest path length, or geodesic distance, between two nodes in a binary network is the minimum number of steps you need to make to go from one of them to the other. See the distance_w-function for more details. }
 \usage{ distance_tm(net, projection.method="sum", gconly=TRUE,subsample=1, seed=NULL) }
 \arguments{
-  \item{net}{A weighted edgelist}
-  \item{projection.method}{The way the two-mode network is projected. I believe that the sum method is the best as this takes into consideration the number of events, projects etc that two individuals had contact through. In certain cases, "Newman" might be better. See the projecting_tm-function.}
+  \item{net}{A two-mode network }
+  \item{projection.method}{The way the two-mode network is projected. The sum method defines tie weights as the number of common nodes (e.g., events, projects etc) that two individuals had contact through. In certain cases, "Newman" might be better. See the projecting_tm-function.}
   \item{gconly}{ logical, whether the function should only be calculated for the giant component. Default is TRUE.}
   \item{subsample}{Whether a only a subset of starting nodes should we used when calculating the measure. This is particularly useful when running out of memory analysing large networks. If it is set to 1, all distances are analysed. If it set to a value below one, this is roughly the proportion of starting noes that will be analysed. If it is set to an interger greater than 1, this number of starting nodes that will be analysed.}
   \item{seed}{If a subset of starting nodes is analysed, by setting this parameter, the results are reproducable.}

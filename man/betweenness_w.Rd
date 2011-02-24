@@ -1,16 +1,16 @@
 \name{betweenness_w}
 \alias{betweenness_w}
 \title{ Betweenness centrality in a weighted network }
-\description{ This function calculates betweenness scores for nodes in a weighted network based on the distance_w. \cr
+\description{ This function calculates betweenness scores for nodes in a weighted network based on the distance_w-function. \cr
 Note: This algorithm relies on the igraphs package's implementation of Dijkstra's algorithm. Currently, it does not find multiple shortest paths if two exist.}
 \usage{ betweenness_w(net, directed=NULL, alpha=1) }
 
 \arguments{
   \item{net}{ A weighted edgelist }
   \item{directed}{ logical, whether the network is directed or undirected. Default is NULL, this means that the function checks whether the edgelist is directed or not.}
-  \item{alpha}{ sets the alpha parameter in the generalised measures from Opsahl, T., Agneessens, F., Skvoretz, J., 2010. Node Centrality in Weighted Networks: Generalizing Degree and Shortest Paths. Social Networks. }
+  \item{alpha}{ sets the alpha parameter in the generalised measures from Opsahl, T., Agneessens, F., Skvoretz, J., 2010. Node Centrality in Weighted Networks: Generalizing Degree and Shortest Paths. Social Networks. If this parameter is set to 1 (default), the Dijkstra shortest paths are used. The length of these paths rely simply on the tie weights and disregards the number of nodes on the paths. }
 }
-\value{ Returns a data.frame with two columns: the first containts the node ids of all the nodes in the edgelist, and the second containts the corresponding betweenness scores. }
+\value{ Returns a data.frame with two columns: the first column contains the nodes' ids, and the second column contains the nodes' betweenness scores. }
 \references{ http://toreopsahl.com/2009/02/20/betweenness-in-weighted-networks/ }
 \author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0 }

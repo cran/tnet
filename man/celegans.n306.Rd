@@ -1,7 +1,7 @@
 \name{celegans.n306}
 \docType{data}
 \alias{celegans.n306.net}
-\title{ The neural network of the Caenorhabditis elegans worm (C.elegans) }
+\title{ The neural network of the Caenorhabditis elegans worm (c.elegans) }
 \description{
 This dataset contains the neural network of the Caenorhabditis elegans worm (C.elegans). It was studied by Watts and Strogatz (1998). The network contains 306 nodes that represent neurons. Two neurons are connected if at least one synapse or gap junction exist between them. The weight is the number of synapses and gap junctions. This network was obtained from the Collective Dynamics Group's website.
 }

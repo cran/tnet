@@ -1,4 +1,4 @@
-`symmetrise` <-
+`symmetrise_w` <-
 function(net,method="MAX"){
   # Ensure that the network conforms to the tnet standard
   if (is.null(attributes(net)$tnet))                      net <- as.tnet(net, type = "weighted one-mode tnet")

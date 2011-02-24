@@ -1,5 +1,5 @@
 `add_window_l` <-
-function(net,window=21,remove.nodes=FALSE){
+function(net,window=21,remove.nodes=TRUE){
   # Ensure that the network conforms to the tnet standard
   if (is.null(attributes(net)$tnet))                 net <- as.tnet(net, type = "longitudinal tnet")
   if (attributes(net)$tnet != "longitudinal tnet")   stop("Network not loaded properly")

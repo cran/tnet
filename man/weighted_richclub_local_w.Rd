@@ -1,9 +1,9 @@
-\name{weighted_richclub_w_local}
-\alias{weighted_richclub_w_local}
+\name{weighted_richclub_local_w}
+\alias{weighted_richclub_local_w}
 \title{ The weighted rich-club effect (local measure) }
 \description{ This function calculates the local weighted rich-club coefficient proposed in Opsahl, T., 2008. Local weighted rich-club measure. \cr
 http://toreopsahl.com/2008/12/26/local-weighted-rich-club-measure/ }
-\usage{weighted_richclub_w_local(net, prominence)}
+\usage{weighted_richclub_local_w(net, prominence)}
 \arguments{
   \item{net}{A weighted edgelist}
   \item{prominence}{ A vector with 1 denoting prominent, and 0 non-prominent. This list must be as long as the highest node id number. }
@@ -22,7 +22,7 @@ w=c(4,2,4,4,1,2,2,4,1,2,1,1))
 prominence <- c(1,1,1,0,0,0)
 
 ## Run the function
-weighted_richclub_w_local(sample, prominence)
+weighted_richclub_local_w(sample, prominence)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

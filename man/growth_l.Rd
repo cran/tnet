@@ -10,11 +10,11 @@
   \item{effects}{ The effects to be analysed }
   \item{window}{ Whether a window should be used. }
   \item{binary}{ Whether duplicated ties should be removed. }
-  \item{nstrata}{ Total number of cases. Minimum is 2 in which 1 control case is used for each observed case. }
-  \item{seed}{ seed for random generator, set if you want random yet reproducable results. }
-  \item{regression}{ Whether R should perform the regression or output a regression table. If you want to run multiple regression, it is quicker to output the table, and then run multiple regressions. }
+  \item{nstrata}{ Total number of regression observations for each observed tie (i.e., number of control cases plus 1 for the observed tie). Minimum is 2 in which 1 control case is used for each observed case. }
+  \item{seed}{ seed for random generator, set to have reproducable results. }
+  \item{regression}{ Whether R should perform the regression or output a regression table. If you want to run multiple regression, it is quicker to output the table, and then run multiple regressions. By outputting the table, it is also possible to add square terms and additional data. }
 }
-\value{ Returns a distance matrix. }
+\value{ Returns a regression result or table. }
 \references{ Tore Opsahl, Bernie Hogan. Growth mechanisms in continuously-observed networks: Communication in a Facebook-like community. arXiv:1010.2141 }
 \author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0}

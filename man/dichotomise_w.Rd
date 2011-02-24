@@ -6,7 +6,7 @@
 }
 \usage{dichotomise_w(net,GT=0)}
 \arguments{
-  \item{net}{A weighted one-mode edgelist}
+  \item{net}{A weighted one-mode network }
   \item{GT}{ the cut-off parameter. Default is set to 0, so edges/arcs with a weight greater than 0 is set to 1. }
 }
 \value{Returns the edgelist with edges below the cut-off removed, and all weights equal to 1.}

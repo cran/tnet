@@ -1,4 +1,4 @@
-`clustering_w_local` <-
+`clustering_local_w` <-
 function(net, measure="am"){
   # Ensure that the network conforms to the tnet standard
   if (is.null(attributes(net)$tnet))                      net <- as.tnet(net, type = "weighted one-mode tnet")

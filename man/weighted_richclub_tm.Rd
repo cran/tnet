@@ -2,9 +2,8 @@
 \alias{weighted_richclub_tm}
 \title{ The weighted rich-club effect (two-mode networks) }
 \description{
-  This function calculates the weighted rich-club coefficient proposed in Opsahl, T., Colizza, V., Panzarasa, P., Ramasco, J.J., 2008. Prominence and control: The weighted rich-club effect. PRL 101. It incorporates two extentions:\cr
-  1) a new way of reshuffling (two-mode reshuffling; \cr
-  http://toreopsahl.com/2009/05/29/weighted-rich-club-effect-a-more-appropriate-null-model-for-scientific-collaboration-networks/)\cr
+  This function calculates the weighted rich-club coefficient proposed in Opsahl, T., Colizza, V., Panzarasa, P., Ramasco, J.J., 2008. Prominence and control: The weighted rich-club effect. PRL 101. It incorporates two extentions explained in this blog post http://toreopsahl.com/2009/05/29/weighted-rich-club-effect-a-more-appropriate-null-model-for-scientific-collaboration-networks/:\cr
+  1) a new way of reshuffling (two-mode link reshuffling; \cr
   2) calculating significance levels if there are more than 100 random networks (see my PhD thesis; http://toreopsahl.com/publications/thesis/)
 }
 \usage{weighted_richclub_tm(net, NR=1000, seed=NULL, projection.method="Newman", nbins=30)}

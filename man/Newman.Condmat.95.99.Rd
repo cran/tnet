@@ -18,7 +18,7 @@ See http://toreopsahl.com/datasets/ }
 Newman.Condmat.95.99.net.2mode
 Newman.Condmat.95.99.net.1mode.wNewman
 }
-\format{ The two-mode network is a data frame with two columns. The first is the id of authors and the second is the id of papers. The one-mode network is a data frame with three columns. The first two columns are ids of the authors, and the this column is the weight of the tie. This is calculated based on Newman (2001). }
+\format{ The two-mode network is a data frame with two columns. The first column is the id of authors and the second column is the id of papers. The one-mode network is a data frame with three columns. The first two columns are ids of the authors, and the third column is the weight of the tie. This is calculated based on Newman's (2001) method for defining tie weights. See the projecting_tm-function. }
 \references{ Newman, M. E. J., 2001. The structure of scientific collaboration networks. Proceedings of the National Academy of Sciences of the United States of America 98, 404-409.\cr
 See http://toreopsahl.com/datasets/ }
 \keyword{datasets}

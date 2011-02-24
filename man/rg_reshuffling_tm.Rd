@@ -1,11 +1,12 @@
 \name{rg_reshuffling_tm}
 \alias{rg_reshuffling_tm}
 \title{ Reshuffle of a binary two-mode network }
-\description{ This function randomly resuffles a binary two-mode edgelist. }
-\usage{ rg_reshuffling_tm(net, seed=NULL) }
+\description{ This function randomly resuffles a binary two-mode edgelist whilst maintaining each nodes' degree (both primary and secondary nodes). }
+\usage{ rg_reshuffling_tm(net, option="links", seed=NULL) }
 
 \arguments{
-  \item{net}{A two-mode edgelist}
+  \item{net}{A two-mode network }
+  \item{option}{ Currently only link reshuffling (option="links") allowed.}
   \item{seed}{ seed for random generator, set if you want random yet reproducable results. }
 }
 \value{ Returns a binary two-mode edgelist. }

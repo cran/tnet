@@ -1,5 +1,7 @@
 `rg_reshuffling_tm` <-
-function(net,seed=NULL){
+function(net,option="links",seed=NULL){
+  if(option!="links")
+    stop("Only link reshuffling is currently implemented")
   # Ensure that the network conforms to the tnet standard
   if(is.null(attributes(net)$tnet))                 net <- as.tnet(net, type="binary two-mode tnet")
   if(attributes(net)$tnet!="binary two-mode tnet")  stop("Network not loaded properly")

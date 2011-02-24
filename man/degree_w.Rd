@@ -8,9 +8,9 @@
   \item{net}{A weighted edgelist}
   \item{measure}{ specifies which measures should be calculated }
   \item{type}{ shall out- or in-measures be calculated? Default is out. For undirected networks, this setting is irrelevant, but must be specified. }
-  \item{alpha}{ sets the alpha parameter in the generalised measures from Opsahl, T., Agneessens, F., Skvoretz, J., 2010. Node Centrality in Weighted Networks: Generalizing Degree and Shortest Paths. Social Networks. }
+  \item{alpha}{ sets the alpha parameter in the generalised measures from Opsahl, T., Agneessens, F., Skvoretz, J., 2010. Node Centrality in Weighted Networks: Generalizing Degree and Shortest Paths. Social Networks. If this parameter is set to 1 (default), the sum of tie weights is used. This measure simply use the tie weights and disregards the number of nodes on the paths.}
 }
-\value{ Returns a data.frame with two or three columns: the first containts the node ids of all the nodes in the edgelist, and the second and/or third containt the corresponding degree and/or strength scores. }
+\value{ Returns a data.frame with two or more columns: the first column contains the nodes' ids, and the remaining columns contain the scores of the measures specified in the measure-parameter. }
 \references{ http://toreopsahl.com/2008/11/28/network-weighted-network/ }
 \author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0 }

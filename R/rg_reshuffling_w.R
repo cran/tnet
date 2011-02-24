@@ -8,7 +8,7 @@ function(net,option="weights",directed=NULL,seed=NULL){
      stop("you can only specify one option")
   # Check whether the edgelist is directed        
   if(is.null(directed))
-    directed <- (nrow(symmetrise(net))!=nrow(net))
+    directed <- (nrow(symmetrise_w(net))!=nrow(net))
   # If seed is set, set it formally
   if(!is.null(seed))
     set.seed(as.integer(seed))

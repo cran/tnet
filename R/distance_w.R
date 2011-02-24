@@ -8,7 +8,7 @@ function(net, directed = NULL, gconly = TRUE, subsample = 1, seed = NULL){
     set.seed(as.integer(seed))
   net[, "w"] <- mean(net[, "w"])/net[, "w"]
   if (is.null(directed)) 
-    directed <- (nrow(symmetrise(net)) != nrow(net))
+    directed <- (nrow(symmetrise_w(net)) != nrow(net))
   library(igraph)
   net[,c("i","j")] <- net[,c("i","j")]-1
   if(directed) {

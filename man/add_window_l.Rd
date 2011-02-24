@@ -1,16 +1,16 @@
 \name{add_window_l}
 \alias{add_window_l}
-\title{ Add smoothing window to a longitudinal dataset }
+\title{ Add smoothing window to a longitudinal network }
 \description{
-  This function adds a smoothing window to a longitudinal dataset
+  This function adds negative ties (i.e., a smoothing window) to a longitudinal network.
 }
-\usage{add_window_l(net,window=21, remove.nodes=FALSE)}
+\usage{add_window_l(net,window=21, remove.nodes=TRUE)}
 \arguments{
-  \item{net}{Data in the longitudinal format}
-  \item{window}{Number of days before ties 'expire'.}
-  \item{remove.nodes}{Whether or not nodes should be removed from the network if they have no ties for the length of the window (i.e., a self-loop with a negative weight)}.
+  \item{net}{ Longitudinal network }
+  \item{window}{ Number of days before ties 'expire'.}
+  \item{remove.nodes}{ Whether or not nodes should be removed from the network if they have no more ties. This function adds a self-loop with a negative weight at the time of a node's last tie plus the length of the window. }.
 }
-\value{Returns the data with negative arcs.}
+\value{Returns the longitudinal network with negative arcs.}
 \references{ tore@opsahl.co.uk }
 \author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0}

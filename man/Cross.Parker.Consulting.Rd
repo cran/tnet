@@ -20,7 +20,7 @@ Cross.Parker.Consulting.node.location
 Cross.Parker.Consulting.node.orglevel
 Cross.Parker.Consulting.node.region
 }
-\format{ The networks are data frames with three columns. The first is the id of the sender; the second is the id of the receiver; and the third is the weight of the tie. The nodal attributes are vectors. }
+\format{ The networks are data frames with three columns. The first column is the id of the sender, the second column is the id of the receiver, and the third column is the weight of the tie. The nodal attributes are vectors. }
 \references{ Cross, R., Parker, A., 2004. The Hidden Power of Social Networks. Harvard Business School Press, Boston, MA.\cr
 http://toreopsahl.com/datasets/ }
 \keyword{datasets}

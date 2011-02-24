@@ -6,7 +6,7 @@ function(net, directed = NULL, alpha=1){
 
   # Check if network is directed
   if(is.null(directed)) 
-    directed <- (nrow(symmetrise(net)) != nrow(net))
+    directed <- (nrow(symmetrise_w(net)) != nrow(net))
   
   # Load, prepare for, and use igraph
   library(igraph)

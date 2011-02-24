@@ -4,7 +4,7 @@
 \description{ This function creates a weighted edgelist from a list of edges where a duplicate means an increase in the weight. }
 \usage{shrink_to_weighted_network(net)}
 \arguments{
-  \item{net}{ can use both undirected and directed edgelist in the following format (sender.id receiver.id weight):\cr
+  \item{net}{ can use both undirected and directed edgelist in the following format (sender.id receiver.id):\cr
    1 2\cr
    1 2\cr
    1 2\cr
@@ -13,7 +13,9 @@
    1 3
    }
 }
-\value{Returns a weighted edgelist}
+\value{Returns a weighted one-mode network, e.g.,\cr
+1 2 4 \cr
+1 3 2 }
 \references{ http://toreopsahl.com/2008/11/28/network-weighted-network/ }
 \author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0}
