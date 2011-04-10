@@ -6,9 +6,11 @@ function(net,option="weights",directed=NULL,seed=NULL){
   # Ensure that only one option is specified
   if(length(option)!=1)
      stop("you can only specify one option")
-  # Check whether the edgelist is directed        
-  if(is.null(directed))
-    directed <- (nrow(symmetrise_w(net))!=nrow(net))
+  # Check if network is directed
+  if(is.null(directed)) {
+    tmp <- symmetrise_w(net, method = "MAX")
+    directed <- (nrow(tmp) != nrow(net) | sum(tmp[,"w"]) != sum(net[,"w"]))
+  }
   # If seed is set, set it formally
   if(!is.null(seed))
     set.seed(as.integer(seed))
@@ -26,9 +28,9 @@ function(net,option="weights",directed=NULL,seed=NULL){
     library(igraph)
     if(!directed) 
       net <- net[net[,"i"]<net[,"j"],]
-    net.i <- graph.edgelist(as.matrix(net[,1:2]), directed=directed)
-    net.i <- rewire(net.i, niter = (ecount(net.i)*10))
-    net.i <- get.edgelist(net.i)
+    net.i <- igraph::graph.edgelist(as.matrix(net[,1:2]), directed=directed)
+    net.i <- igraph::rewire(net.i, niter = (ecount(net.i)*10))
+    net.i <- igraph::get.edgelist(net.i)
     net[,1:2] <- net.i[order(net.i[,1], net.i[,2]),]
     if(directed) {
       sample1 <- function(x) 

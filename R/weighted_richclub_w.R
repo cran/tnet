@@ -8,8 +8,10 @@ function(net,rich="k", reshuffle="weights", NR=1000, nbins=30, seed=NULL, direct
   if(!is.null(seed))
     set.seed(as.integer(seed))
   # Check if network is directed
-  if(is.null(directed)) 
-    directed <- (nrow(symmetrise_w(net)) != nrow(net))
+  if(is.null(directed)) {
+    tmp <- symmetrise_w(net, method = "MAX")
+    directed <- (nrow(tmp) != nrow(net) | sum(tmp[,"w"]) != sum(net[,"w"]))
+  }
   # Internal function: the non-normalised coefficient
   `phi` <- function(net){
     output <- cbind(x=xlevels,num=NaN,den=NaN,y=NaN)

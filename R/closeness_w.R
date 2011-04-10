@@ -9,8 +9,11 @@ function(net, directed = NULL, gconly = TRUE, precomp.dist = NULL, alpha=1){
 
   # Compute distance matrix                
   if(is.null(precomp.dist)) {
-    if(is.null(directed) & is.null(precomp.dist)) 
-      directed <- (nrow(symmetrise_w(net)) != nrow(net))
+    # Check if network is directed
+    if(is.null(directed)) {
+      tmp <- symmetrise_w(net, method = "MAX")
+      directed <- (nrow(tmp) != nrow(net) | sum(tmp[,"w"]) != sum(net[,"w"]))
+    }
     precomp.dist <- distance_w(net = net, directed = directed, gconly = gconly)
   }
   if(gconly) {

@@ -5,8 +5,10 @@ function(net, directed = NULL, alpha=1){
   if (attributes(net)$tnet != "weighted one-mode tnet")   stop("Network not loaded properly")
 
   # Check if network is directed
-  if(is.null(directed)) 
-    directed <- (nrow(symmetrise_w(net)) != nrow(net))
+  if(is.null(directed)) {
+    tmp <- symmetrise_w(net, method = "MAX")
+    directed <- (nrow(tmp) != nrow(net) | sum(tmp[,"w"]) != sum(net[,"w"]))
+  }
   
   # Load, prepare for, and use igraph
   library(igraph)
@@ -14,10 +16,10 @@ function(net, directed = NULL, alpha=1){
   net[,"w"] <- (1/net[,"w"])^alpha
   if(directed) {
     g <- graph.edgelist(el=as.matrix(net[,c("i","j")]), directed=TRUE)
-    g <- set.edge.attribute(g, "weight", value=net[,"w"])
+    g <- igraph::set.edge.attribute(g, "weight", value=net[,"w"])
   } else {
     g <- graph.edgelist(el=as.matrix(net[net[,"i"]<net[,"j"],c("i","j")]), directed=FALSE)
-    g <- set.edge.attribute(g, "weight", value=net[net[,"i"]<net[,"j"],"w"])
+    g <- igraph::set.edge.attribute(g, "weight", value=net[net[,"i"]<net[,"j"],"w"])
   }
   N <- length(V(g))
   out <- cbind(node = 1:N, betweenness = 0)

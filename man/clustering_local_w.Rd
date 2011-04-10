@@ -12,7 +12,7 @@ This step is not required unless you receive warnings when running the function.
 \arguments{
   \item{net}{A weighted edgelist}
   \item{measure}{ The measure-switch control the method used to calculate the value of the triplets.\cr
-  am implies the arithmetic mean method\cr
+  am implies the arithmetic mean method (default)\cr
   gm implies the geometric mean method\cr
   mi implies the minimum method\cr
   ma implies the maximum method\cr

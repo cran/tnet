@@ -8,9 +8,9 @@ function(net, measure="am"){
   N <- max(c(net[,"i"],net[,"j"]))
   E <- nrow(net)
   # Ensure network is undirected
-  tmp <- rbind(net, cbind(i=net[,"j"], j=net[,"i"], w=0))
-  tmp <- tmp[!duplicated(tmp[,c("i","j")]),]
-  if(nrow(tmp) != E) 
+  tmp <- symmetrise_w(net, method = "MAX")
+  directed <- (nrow(tmp) != nrow(net) | sum(tmp[,"w"]) != sum(net[,"w"]))
+  if(directed) 
     stop("Network is not undirected!\nMeasure is not defined from directed networks.\n")
   # Create output object
   net <- net[order(net[,"i"], net[,"j"]),]
