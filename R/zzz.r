@@ -7,5 +7,5 @@
 ######################################################################
 
 .First.lib <- function(lib, pkd){
-  cat("tnet: Analysis of Weighted, Two-mode, and Longitudinal networks.\nType ?tnet for help.\n")
+  cat("\ntnet: Analysis of Weighted, Two-mode, and Longitudinal networks.\nType ?tnet for help.\n")
 }

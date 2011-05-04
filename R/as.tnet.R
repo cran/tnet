@@ -3,7 +3,17 @@ function (net, type = NULL) {
   # Basic parameters
   NC <- ncol(net)
   E <- nrow(net)
-  # Find type if nte specified
+
+  # Ensure data frame -- problem with as.data.frame when matrix
+  tmp <- net
+  if(NC==2)
+    net <- data.frame(tmp[,1], tmp[,2])
+  if(NC==3)
+    net <- data.frame(tmp[,1], tmp[,2], tmp[,3])
+  if(NC==4)
+    net <- data.frame(tmp[,1], tmp[,2], tmp[,3], tmp[,4])
+
+  # Find type if not specified
   if (is.null(type)) {
     type <- switch(as.character(NC),
       "2" = "binary two-mode tnet",

@@ -6,7 +6,7 @@
 
 \arguments{
   \item{net}{A two-mode network }
-  \item{option}{ Currently only link reshuffling (option="links") allowed.}
+  \item{option}{ Either link reshuffling (option="links") or weight reshuffling (option="weights"), see Opsahl et al. (2008).}
   \item{seed}{ seed for random generator, set if you want random yet reproducable results. }
 }
 \value{ Returns a binary two-mode edgelist. }
@@ -14,7 +14,7 @@
 \author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0}
 \examples{
-## Load  data
+## Load data
 data(Newman.Condmat.95.99)
 
 ## Run the function on a subset

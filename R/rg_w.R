@@ -12,8 +12,7 @@ function (nodes = 100, arcs = 300, weights = 1, directed = TRUE, seed = NULL) {
     if (directed) {
       rg_w <- rg_w[!duplicated(rg_w[, 1:2]), ]
       rg_w <- rg_w[sample(1:nrow(rg_w), arcs), ]
-    }
-    else {
+    } else {
       rg_w <- rg_w[rg_w[, 1] < rg_w[, 2], ]
       rg_w <- rg_w[!duplicated(rg_w[, 1:2]), ]
       rg_w <- rg_w[sample(1:nrow(rg_w), arcs * 0.5), ]
