@@ -20,21 +20,21 @@ function(net, directed = NULL, gconly = TRUE, subsample = 1, seed = NULL){
   }
   
   # Do computation in igraph
-  library(igraph)
+  library(igraph0)
   net[,c("i","j")] <- net[,c("i","j")]-1
   if(directed) {
-    g <- igraph::graph.edgelist(el=as.matrix(net[,c("i","j")]), directed=TRUE)
-    g <- igraph::set.edge.attribute(g, "tnetw", value=net[,"w"])
+    g <- igraph0::graph.edgelist(el=as.matrix(net[,c("i","j")]), directed=TRUE)
+    g <- igraph0::set.edge.attribute(g, "tnetw", value=net[,"w"])
   } else {
-    g <- igraph::graph.edgelist(el=as.matrix(net[net[,"i"]<net[,"j"],c("i","j")]), directed=FALSE)
-    g <- igraph::set.edge.attribute(g, "tnetw", value=net[net[,"i"]<net[,"j"],"w"])
+    g <- igraph0::graph.edgelist(el=as.matrix(net[net[,"i"]<net[,"j"],c("i","j")]), directed=FALSE)
+    g <- igraph0::set.edge.attribute(g, "tnetw", value=net[net[,"i"]<net[,"j"],"w"])
   }
   if(gconly) {
-    gc <- igraph::clusters(g, mode="strong")
+    gc <- igraph0::clusters(g, mode="strong")
     gc <- which(gc$membership==names(sort(-table(gc$membership)))[1])
-    g <- igraph::subgraph(g, gc-1)
+    g <- igraph0::subgraph(g, gc-1)
   }
-  d <- igraph::shortest.paths(g, mode="out", weights=igraph::get.edge.attribute(g, "tnetw"))
+  d <- igraph0::shortest.paths(g, mode="out", weights=igraph0::get.edge.attribute(g, "tnetw"))
   diag(d) <- NA
   attributes(d)$nodes <- as.integer(V(g)+1)
   return(d)

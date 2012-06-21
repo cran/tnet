@@ -1,4 +1,4 @@
-\name{Cross.Parker.Manufacturing}
+\name{Cross.Parker.Manufacturing.net.info}
 \docType{data}
 \alias{Cross.Parker.Manufacturing.net.info}
 \alias{Cross.Parker.Manufacturing.net.aware}

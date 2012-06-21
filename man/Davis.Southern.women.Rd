@@ -1,4 +1,4 @@
-\name{Davis.Southern.women}
+\name{Davis.Southern.women.2mode}
 \docType{data}
 \alias{Davis.Southern.women.2mode}
 \alias{Davis.Southern.women.1mode.Cooccurance}

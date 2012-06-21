@@ -1,4 +1,4 @@
-\name{Newman.Condmat.95.99}
+\name{Newman.Condmat.95.99.net.2mode}
 \docType{data}
 \alias{Newman.Condmat.95.99.net.2mode}
 \alias{Newman.Condmat.95.99.net.1mode.wNewman}

@@ -1,9 +1,7 @@
-\name{OnlineSocialNetwork.n1899}
+\name{ OnlineSocialNetwork.n1899.net }
 \docType{data}
-\alias{
-OnlineSocialNetwork.n1899.net
-OnlineSocialNetwork.n1899.lnet
-}
+\alias{ OnlineSocialNetwork.n1899.net }
+\alias{ OnlineSocialNetwork.n1899.lnet }
 \title{ Facebook-like Online Social Network }
 \description{
 This network is the Facebook-like Social Network-dataset used in my Ph.D. thesis. This network has also been described in Patterns and Dynamics of Users' Behaviour and Interaction: Network Analysis of an Online Community and used in Prominence and control: The weighted rich-club effect and Clustering in weighted networks. The network originates from a virtual community among students at University of California, Irvine. The edgelists include the users that sent or received at least one message during that period (1,899). A total number of 59,835 online messages were sent among over 20,296 directed ties.}

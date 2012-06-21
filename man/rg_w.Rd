@@ -13,7 +13,7 @@
   \item{seed}{ the random seed. If you want it to be non-reproducable, use NULL otherwise, use a number }
 }
 \value{  Returns a one-mode network with random weights.}
-\references{ http://opsahl.co.uk/tnet/ }
+\references{ http://toreopsahl.com/tnet/ }
 \author{ Tore Opsahl; http://toreopsahl.com }
 \note{ version 1.0.0}
 \examples{

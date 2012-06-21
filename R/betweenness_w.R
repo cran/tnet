@@ -11,15 +11,15 @@ function(net, directed = NULL, alpha=1){
   }
   
   # Load, prepare for, and use igraph
-  library(igraph)
+  library(igraph0)
   net[,c("i","j")] <- net[,c("i","j")]-1
   net[,"w"] <- (1/net[,"w"])^alpha
   if(directed) {
     g <- graph.edgelist(el=as.matrix(net[,c("i","j")]), directed=TRUE)
-    g <- igraph::set.edge.attribute(g, "weight", value=net[,"w"])
+    g <- igraph0::set.edge.attribute(g, "weight", value=net[,"w"])
   } else {
     g <- graph.edgelist(el=as.matrix(net[net[,"i"]<net[,"j"],c("i","j")]), directed=FALSE)
-    g <- igraph::set.edge.attribute(g, "weight", value=net[net[,"i"]<net[,"j"],"w"])
+    g <- igraph0::set.edge.attribute(g, "weight", value=net[net[,"i"]<net[,"j"],"w"])
   }
   N <- length(V(g))
   out <- cbind(node = 1:N, betweenness = 0)

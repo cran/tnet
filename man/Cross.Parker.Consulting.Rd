@@ -1,4 +1,4 @@
-\name{ Cross.Parker.Consulting }
+\name{ Cross.Parker.Consulting.net.info }
 \docType{data}
 \alias{ Cross.Parker.Consulting.net.info }
 \alias{ Cross.Parker.Consulting.net.value }

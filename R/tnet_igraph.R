@@ -14,12 +14,12 @@ function(net, type=NULL, directed=NULL) {
     }
     net[, c("i", "j")] <- net[, c("i", "j")] - 1
     if(directed) {
-      g <- igraph::graph.edgelist(el = as.matrix(net[, c("i", "j")]), directed = TRUE)
-      g <- igraph::set.edge.attribute(g, "weight", value = net[, "w"])
+      g <- igraph0::graph.edgelist(el = as.matrix(net[, c("i", "j")]), directed = TRUE)
+      g <- igraph0::set.edge.attribute(g, "weight", value = net[, "w"])
     } else {
       net <- net[net[,"i"]<net[,"j"],]
-      g <- igraph::graph.edgelist(el = as.matrix(net[,c("i","j")]), directed = FALSE)
-      g <- igraph::set.edge.attribute(g, "weight", value = net[, "w"])
+      g <- igraph0::graph.edgelist(el = as.matrix(net[,c("i","j")]), directed = FALSE)
+      g <- igraph0::set.edge.attribute(g, "weight", value = net[, "w"])
     }
   } else {
     stop("igraph can currently only handle one-mode networks")

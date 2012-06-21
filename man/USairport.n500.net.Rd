@@ -1,4 +1,4 @@
-\name{USairport.n500}
+\name{USairport.n500.net}
 \docType{data}
 \alias{USairport.n500.net}
 \title{ The network among the 500 busiest US commercial airports. }

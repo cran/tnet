@@ -1,4 +1,4 @@
-\name{Freemans.EIES}
+\name{Freemans.EIES.net.1.n48}
 \docType{data}
 \alias{Freemans.EIES.net.1.n48}
 \alias{Freemans.EIES.net.2.n48}

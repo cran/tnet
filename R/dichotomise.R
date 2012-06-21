@@ -35,8 +35,8 @@ function(net,GT=0){
     if(nrow(net)==0) {
       warning("There were no ties with a weight greater than the cutoff")
     } else {
-      # Set their weight to 1
-      net[,"w"] <- 1
+      # Remove weight column
+      net <- net[,c("i","p")]
       row.names(net)<-NULL
     }
   }

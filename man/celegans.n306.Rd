@@ -1,4 +1,4 @@
-\name{celegans.n306}
+\name{celegans.n306.net}
 \docType{data}
 \alias{celegans.n306.net}
 \title{ The neural network of the Caenorhabditis elegans worm (c.elegans) }

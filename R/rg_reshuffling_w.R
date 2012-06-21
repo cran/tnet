@@ -25,12 +25,12 @@ function(net,option="weights",directed=NULL,seed=NULL){
 
   ## Weight and Link reshuffle
   } else if(option=="links") {
-    library(igraph)
+    library(igraph0)
     if(!directed) 
       net <- net[net[,"i"]<net[,"j"],]
-    net.i <- igraph::graph.edgelist(as.matrix(net[,1:2]), directed=directed)
-    net.i <- igraph::rewire(net.i, niter = (ecount(net.i)*10))
-    net.i <- igraph::get.edgelist(net.i)
+    net.i <- igraph0::graph.edgelist(as.matrix(net[,1:2]), directed=directed)
+    net.i <- igraph0::rewire(net.i, niter = (ecount(net.i)*10))
+    net.i <- igraph0::get.edgelist(net.i)
     net[,1:2] <- net.i[order(net.i[,1], net.i[,2]),]
     if(directed) {
       sample1 <- function(x) 

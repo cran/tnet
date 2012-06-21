@@ -15,10 +15,10 @@
 \note{ version 1.0.0}
 \examples{
 ## Load data
-data(Newman.Condmat.95.99)
+net <- rg_tm(10, 8, 0.4)
 
 ## Run the function on a subset
-rg_reshuffling_tm(Newman.Condmat.95.99.net.2mode[1:100,], seed=1)
+rg_reshuffling_tm(net, seed=1)
 
 
 }

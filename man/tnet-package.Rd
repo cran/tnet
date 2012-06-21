@@ -1,5 +1,4 @@
 \name{tnet-package}
-\alias{tnet-package}
 \alias{tnet}
 \docType{package}
 \title{ Collection of functions for analysing weighted networks, two-mode networks, and longitudinal networks }
@@ -11,7 +10,7 @@ Type: \tab Package\cr
 Version: \tab 3.0.5\cr
 Date: \tab 2011-05-04 }
 
-This package is created to analyse weighted networks, two-mode networks, and longitudinal networks datasets. More information is available on http://opsahl.co.uk/tnet/ and http://toreopsahl.com
+This package is created to analyse weighted networks, two-mode networks, and longitudinal networks datasets. More information is available on http://toreopsahl.com/tnet/
 
 It utilises three forms of data structures (it can automatically convert matrices etc into these formats, see the as.tnet-function):
 
@@ -41,7 +40,7 @@ where the first row refers to node 1, the second row to node 2, etc. The first c
 
 A big thank you to the igraph guys as this package relies on their work for many of the more computational tasks!
 }
-\references{ http://opsahl.co.uk/tnet/ }
+\references{ http://toreopsahl.com/tnet/ }
 \author{ Tore Opsahl; http://toreopsahl.com }
 %\keyword{ networks }
 \examples{

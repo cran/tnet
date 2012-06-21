@@ -17,7 +17,7 @@ function(net,rich="k", reshuffle="weights", NR=1000, nbins=30, seed=NULL, direct
     output <- cbind(x=xlevels,num=NaN,den=NaN,y=NaN)
     net <- cbind(net, rc.i=prominence[net[,1],"r"], rc.j=prominence[net[,2],"r"])
     net <- cbind(net, rc=pmin.int(net[,"rc.i"],net[,"rc.j"]))
-    Er <- sapply(output[,"x"], function(a) which(net[,"rc"]>a))
+    Er <- lapply(output[,"x"], function(a) which(net[,"rc"]>a))
     output[,"num"] <- unlist(lapply(Er, function(a) sum(net[a,"w"])))
     net <- net[order(-net[,"w"]),]
     output[,"den"] <- unlist(lapply(Er, function(a) sum(net[1:length(a),"w"])))
