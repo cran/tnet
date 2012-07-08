@@ -12,17 +12,17 @@ function(net, type=NULL, directed=NULL) {
       tmp <- symmetrise_w(net, method = "MAX")
       directed <- (nrow(tmp) != nrow(net) | sum(tmp[,"w"]) != sum(net[,"w"]))
     }
-    net[, c("i", "j")] <- net[, c("i", "j")] - 1
     if(directed) {
-      g <- igraph0::graph.edgelist(el = as.matrix(net[, c("i", "j")]), directed = TRUE)
-      g <- igraph0::set.edge.attribute(g, "weight", value = net[, "w"])
+      g <- igraph::graph.edgelist(el = as.matrix(net[, c("i", "j")]), directed = TRUE)
+      g <- igraph::set.edge.attribute(g, "weight", value = net[, "w"])
     } else {
       net <- net[net[,"i"]<net[,"j"],]
-      g <- igraph0::graph.edgelist(el = as.matrix(net[,c("i","j")]), directed = FALSE)
-      g <- igraph0::set.edge.attribute(g, "weight", value = net[, "w"])
+      g <- igraph::graph.edgelist(el = as.matrix(net[,c("i","j")]), directed = FALSE)
+      g <- igraph::set.edge.attribute(g, "weight", value = net[, "w"])
     }
   } else {
     stop("igraph can currently only handle one-mode networks")
   }
   return(g)
 }
+
