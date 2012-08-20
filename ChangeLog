@@ -1,3 +1,10 @@
+-- Version 3.0.8 --
+
+Updated clustering_w do deal with integer matrices
+Updated as.static.tnet to check that incoming network conforms to tnet standard
+Updated closeness_w do sum farness before inverting when supplying a pre-computed distance matrix
+Updated the Facebook-like Social Network so that the first column is character and not factor
+
 -- Version 3.0.7 --
 
 Updated to use igraph (version 0.6.2)
@@ -5,7 +12,7 @@ Updated betweenness_w to directly use igraph::betweeness as this one is now able
 
 -- Version 3.0.6 --
 
-Updated to use igraph0
 Included reinforcement_tm
+Updated to use igraph0 (version 0.5.x)
 Updated dichotomise_tm to return two columns only at all times
 

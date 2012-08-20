@@ -16,25 +16,16 @@ function(net, directed = NULL, gconly = TRUE, precomp.dist = NULL, alpha=1){
     }
     precomp.dist <- distance_w(net = net, directed = directed, gconly = gconly)
   }
-  if(gconly) {
-    # Sum up distances to all other nodes to get farness
-    out <- cbind(
-      node = attributes(precomp.dist)$nodes, 
-      closeness = rowSums(precomp.dist, na.rm = TRUE),
-      n.closeness=NaN)
-    # Invert to get closeness
-    out[, "closeness"] <- 1/out[, "closeness"]
-  } else {
-    # Invert distances
-    precomp.dist <- 1/precomp.dist
-    # Sum up distances to all other nodes to get farness
-    out <- cbind(
-      node = attributes(precomp.dist)$nodes, 
-      closeness = rowSums(precomp.dist, na.rm = TRUE),
-      n.closeness=NaN)
-  }
+  # Sum up distances to all other nodes to get farness
+  out <- cbind(
+    node = attributes(precomp.dist)$nodes, 
+    closeness = rowSums(precomp.dist, na.rm = TRUE),
+    n.closeness=NaN)
+  # Invert to get closeness
+  out[, "closeness"] <- 1/out[, "closeness"]
+  # Normalise scores by N-1 (not always appropriate for weighted networks!)
   out[,"n.closeness"] <- out[,"closeness"]/(nrow(out)-1)
-  # Return
+  # Return object
   return(out)
 }
 

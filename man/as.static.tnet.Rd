@@ -24,10 +24,10 @@ t <- c('2007-09-12 13:45:00',
 i <- c(1,1,1,1,1,1,1,1);
 j <- c(2,2,2,2,2,2,3,3);
 w <- c(1,1,1,1,1,-1,1,1);
-sample <- data.frame(t, i, j, w);
+net <- data.frame(t, i, j, w);
 
 ## Run the programme
-as.static.tnet(sample)
+as.static.tnet(net)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
