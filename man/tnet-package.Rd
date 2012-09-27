@@ -7,8 +7,8 @@
 \tabular{ll}{
 Package: \tab tnet\cr
 Type: \tab Package\cr
-Version: \tab 3.0.8\cr
-Date: \tab 2012-08-20 }
+Version: \tab 3.0.9\cr
+Date: \tab 2012-09-27 }
 
 This package is created to analyse weighted networks, two-mode networks, and longitudinal networks datasets. More information is available on http://toreopsahl.com/tnet/
 

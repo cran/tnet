@@ -16,6 +16,8 @@ function(net, directed = NULL, gconly = TRUE, precomp.dist = NULL, alpha=1){
     }
     precomp.dist <- distance_w(net = net, directed = directed, gconly = gconly)
   }
+  # Fix Inf values to be removed
+  precomp.dist[is.infinite(precomp.dist)] <- NA
   # Sum up distances to all other nodes to get farness
   out <- cbind(
     node = attributes(precomp.dist)$nodes, 
