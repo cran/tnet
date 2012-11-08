@@ -1,3 +1,7 @@
+-- Version 3.0.10 --
+
+Updated closeness_w, the 3.0.9 updated broke the function for gconly=FALSE
+
 -- Version 3.0.9 --
 
 Updated closeness_w to deal with a change in R that does not exclude Inf when specifying na.rm in mean-functions

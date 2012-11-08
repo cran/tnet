@@ -1,12 +1,12 @@
-1582580a088da233ebfad8dd4ca2457f *ChangeLog
-0dcd28b1b1df0a293acac4b7d1daf9f9 *DESCRIPTION
+95a5b07e7d89958fac1bc214971d039f *ChangeLog
+21c46c831634591c28db603978ae9b7a *DESCRIPTION
 569c23d4de8c9324a7f01242568a5684 *LICENSE
 9cc6c5a6a28cfa3f3f65688036549bf8 *NAMESPACE
 3d4ef4ab9cbd6811494e66d379fc103a *R/add_window_l.R
 0bbda965edc65a7c74924b0d2b3adf0e *R/as.static.tnet.R
 ae31af19b79b6d872106078032efacef *R/as.tnet.R
 dfa06b1d8bda811560d8cf3527bcfd8a *R/betweenness_w.R
-737a1f387eb8e15af177693ebfc6722e *R/closeness_w.R
+4cf18fb2b1dca15a852c8fb7ef541d3b *R/closeness_w.R
 1801fea2af93302ba84a6f93abe7321d *R/clustering_local_tm.R
 79e69f991b47ac4f46ce94d6750e1f44 *R/clustering_local_w.R
 0b5ca792e14b6365aafd33ff94b2b696 *R/clustering_tm.R
@@ -70,7 +70,7 @@ a5d9cac52fbb0faa9b54ea6fc61dfd2e *man/rg_tm.Rd
 2c8893ba4e1446fcb84488d40b80c00f *man/rg_w.Rd
 f6c451f55bc12c4b271f8ab5a446740f *man/shrink_to_weighted_network.Rd
 4667cdc38953585d9f43520751eff170 *man/symmetrise_w.Rd
-de8a46f824651b9a47cc420d04706230 *man/tnet-package.Rd
+b89da795394b240fef179f8326b801ed *man/tnet-package.Rd
 d41751c944f73aeddccb2fd7ed2df97f *man/tnet_igraph.Rd
 332b71854036e937c38e423bad98d733 *man/tnet_ucinet.Rd
 d7e59ea181fb0897a1c1dc972063759f *man/weighted_richclub_local_w.Rd

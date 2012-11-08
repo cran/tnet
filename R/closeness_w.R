@@ -16,15 +16,19 @@ function(net, directed = NULL, gconly = TRUE, precomp.dist = NULL, alpha=1){
     }
     precomp.dist <- distance_w(net = net, directed = directed, gconly = gconly)
   }
-  # Fix Inf values to be removed
-  precomp.dist[is.infinite(precomp.dist)] <- NA
+  # Change algorithm based on gconly parameter
+  if(!gconly) {
+    precomp.dist <- 1/precomp.dist
+  }
   # Sum up distances to all other nodes to get farness
   out <- cbind(
     node = attributes(precomp.dist)$nodes, 
     closeness = rowSums(precomp.dist, na.rm = TRUE),
     n.closeness=NaN)
-  # Invert to get closeness
-  out[, "closeness"] <- 1/out[, "closeness"]
+  # If only gconly
+  if(gconly) {
+    out[, "closeness"] <- 1/out[, "closeness"]
+  }
   # Normalise scores by N-1 (not always appropriate for weighted networks!)
   out[,"n.closeness"] <- out[,"closeness"]/(nrow(out)-1)
   # Return object
