@@ -24,10 +24,12 @@ function(net, directed = NULL, gconly = TRUE, subsample = 1, seed = NULL){
   if(gconly) {
     gc <- igraph::clusters(g, mode="strong")
     gc <- which(gc$membership==names(sort(-table(gc$membership)))[1])
-    g <- igraph::induced.subgraph(graph=g, vids=gc)
+    g <- igraph::induced.subgraph(graph=g, vids=gc, "create_from_scratch")
+  } else {
+    gc <- as.integer(V(g))
   }
   d <- igraph::shortest.paths(g, mode="out", weights=igraph::get.edge.attribute(g, "tnetw"))
   diag(d) <- NA
-  attributes(d)$nodes <- as.integer(V(g))
+  attributes(d)$nodes <- gc
   return(d)
 }
