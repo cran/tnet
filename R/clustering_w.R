@@ -40,9 +40,9 @@ function (net, measure = "am") {
     } else if (measure[i] == "gm") {
       tvalues <- sqrt(tmp[, "wij"] * tmp[, "wjk"])
     } else if (measure[i] == "ma") {
-      tvalues <- pmin.int(tmp[, "wij"], tmp[, "wjk"])
-    } else if (measure[i] == "mi") {
       tvalues <- pmax.int(tmp[, "wij"], tmp[, "wjk"])
+    } else if (measure[i] == "mi") {
+      tvalues <- pmin.int(tmp[, "wij"], tmp[, "wjk"])
     } else if (measure[i] == "bi") {
       tvalues <- rep(1, nrow(tmp))
     } else {

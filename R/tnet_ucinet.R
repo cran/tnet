@@ -13,7 +13,7 @@ function(net, type=NULL, file=NULL) {
   if (attributes(net)$tnet == "weighted one-mode tnet") {
     N <- max(c(net[,"i"], net[,"j"]))
     cat(paste("N=", N, "\nformat=edgelist1\ndata:\n", sep=""), file=file, append=TRUE)
-    write.table(net, file=file, append=TRUE, col.names=FALSE, row.names=FALSE)
+    utils::write.table(net, file=file, append=TRUE, col.names=FALSE, row.names=FALSE)
 
   } else {
     stop("the function can currently only handle one-mode networks")

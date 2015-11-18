@@ -19,7 +19,7 @@ function (nodes = 100, arcs = 300, weights = 1, directed = TRUE, seed = NULL) {
       rg_w <- rbind(as.matrix(rg_w), cbind(rg_w[, 2], rg_w[, 1], rg_w[, 3]))
     }
   } else {
-    rg_w <- runif(nodes^2)
+    rg_w <- stats::runif(nodes^2)
     rg_w <- rg_w < arcs
     rg_w <- matrix(data = rg_w, nrow = nodes, ncol = nodes)
     rg_w <- which(rg_w, arr.ind = TRUE)

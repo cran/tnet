@@ -266,8 +266,6 @@ cat("2/3: Calculating measures\n")
   # Conduct regression or output regression table
   if(regression) {
     cat("3/3: Running regression\n");
-    # Load regression package
-    library(survival)
     # Create regression formula
     formula <- "w ~"
     for(t in effects)

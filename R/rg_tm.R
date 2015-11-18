@@ -8,7 +8,7 @@ function (ni = 100, np = 100, ties = 300, weights = 1, seed = NULL) {
     net <- net[!duplicated(net[, 1:2]), ]
     net <- net[1:ties, ]
   } else {
-    net <- runif(ni * np)
+    net <- stats::runif(ni * np)
     net <- net <= ties
     net <- matrix(data = net, nrow = ni, ncol = np)
     net <- which(net, arr.ind = TRUE)

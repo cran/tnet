@@ -2,7 +2,8 @@
 \alias{growth_l}
 \title{ Identifies growth mechanisms responsible for tie generation in longitudinal networks }
 \description{ This function identifies growth mechanisms responsible for tie generation in longitudinal networks. }
-\usage{ growth_l(net, perspective = "actor", effects, window=NULL, binary=FALSE, nstrata=10, seed=NULL, regression=TRUE) }
+\usage{ growth_l(net, perspective = "actor", effects, window=NULL, 
+binary=FALSE, nstrata=10, seed=NULL, regression=TRUE) }
 
 \arguments{
   \item{net}{ A longitudinal network }
