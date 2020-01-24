@@ -30,8 +30,8 @@ c(5,2,2),
 c(5,6,1),
 c(6,5,1))
 
-## Run the programme
-tnet_ucinet(sample, type="weighted one-mode tnet")
+## Run the program: leaves file in working directory
+\donttest{tnet_ucinet(sample, type="weighted one-mode tnet")}
 
 }
 

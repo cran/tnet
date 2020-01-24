@@ -1,5 +1,5 @@
 ab83defec34b7a11c8302f4261cfbe8a *ChangeLog
-dcde99c9019ebf4f09b0f710d74bd21f *DESCRIPTION
+8a4b00a2e3114a6ab4883e01dce94374 *DESCRIPTION
 9cc6c5a6a28cfa3f3f65688036549bf8 *NAMESPACE
 3d4ef4ab9cbd6811494e66d379fc103a *R/add_window_l.R
 0bbda965edc65a7c74924b0d2b3adf0e *R/as.static.tnet.R
@@ -71,7 +71,7 @@ f6c451f55bc12c4b271f8ab5a446740f *man/shrink_to_weighted_network.Rd
 4667cdc38953585d9f43520751eff170 *man/symmetrise_w.Rd
 f5fbb212feda469601f89a5228b2ffe4 *man/tnet-package.Rd
 d41751c944f73aeddccb2fd7ed2df97f *man/tnet_igraph.Rd
-332b71854036e937c38e423bad98d733 *man/tnet_ucinet.Rd
+c25d551dfcd40f24d48409babb62966a *man/tnet_ucinet.Rd
 d7e59ea181fb0897a1c1dc972063759f *man/weighted_richclub_local_w.Rd
 b9dfd8d46c78119d3373cede3923220d *man/weighted_richclub_tm.Rd
 840f9f7a440f8aa6cb1016a49527b07e *man/weighted_richclub_w.Rd
