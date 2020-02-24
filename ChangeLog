@@ -1,3 +1,7 @@
+-- Version 3.0.15 --
+
+Update to test to clear a CRAN check
+
 -- Version 3.0.14 --
 
 Updated rg_reshuffling_w, a recent update to igraph broke the function. This has now been fixed.

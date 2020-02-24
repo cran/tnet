@@ -1,5 +1,5 @@
-ab83defec34b7a11c8302f4261cfbe8a *ChangeLog
-8a4b00a2e3114a6ab4883e01dce94374 *DESCRIPTION
+6dfb26f4dcc7119f05d8cc545524dec4 *ChangeLog
+b0ccfcc436562d1274ee25779caddd73 *DESCRIPTION
 9cc6c5a6a28cfa3f3f65688036549bf8 *NAMESPACE
 3d4ef4ab9cbd6811494e66d379fc103a *R/add_window_l.R
 0bbda965edc65a7c74924b0d2b3adf0e *R/as.static.tnet.R
@@ -28,12 +28,12 @@ dadde6c6817bd4a266594f0588cf37ed *R/rg_w.R
 78049328d259c583120e00de969e2b23 *R/shrink_to_weighted_network.R
 65c47f555a55214757251ba81dd6701b *R/symmetrise_w.R
 9ff97509ba449b7152e436d5142336c8 *R/tnet_igraph.R
-a2713b578e90de418d4287acaa0b8067 *R/tnet_ucinet.R
+cf520ebe684a06a7d647a5d1de0cc157 *R/tnet_ucinet.R
 fe707ad754064b8d4f1fd1feca975232 *R/weighted_richclub_local_w.R
 583a4bc1b09c4e4fef9154c1cf5debe0 *R/weighted_richclub_tm.R
 0ef399966bcac063c4fb778d499255cf *R/weighted_richclub_w.R
 978feb25cdce72d7d03651e591b1656f *data/datalist
-41ac1b1de303cf52c0b06c2e55272644 *data/tnet.RData
+cc7e1308fed5f4fb8a4d554e5bc927c3 *data/tnet.RData
 dcff3327210deb6253f9fbcf88f4a7b3 *inst/CITATION
 81f0b2aed2213ddf2fa0962c93b510e5 *man/Cross.Parker.Consulting.Rd
 2c371c6d5820ca8c9490b5bcc474dbb4 *man/Cross.Parker.Manufacturing.Rd
@@ -69,9 +69,9 @@ a5d9cac52fbb0faa9b54ea6fc61dfd2e *man/rg_tm.Rd
 2c8893ba4e1446fcb84488d40b80c00f *man/rg_w.Rd
 f6c451f55bc12c4b271f8ab5a446740f *man/shrink_to_weighted_network.Rd
 4667cdc38953585d9f43520751eff170 *man/symmetrise_w.Rd
-f5fbb212feda469601f89a5228b2ffe4 *man/tnet-package.Rd
+b9925e923d0228383cdf575feebea4f3 *man/tnet-package.Rd
 d41751c944f73aeddccb2fd7ed2df97f *man/tnet_igraph.Rd
-c25d551dfcd40f24d48409babb62966a *man/tnet_ucinet.Rd
+332b71854036e937c38e423bad98d733 *man/tnet_ucinet.Rd
 d7e59ea181fb0897a1c1dc972063759f *man/weighted_richclub_local_w.Rd
 b9dfd8d46c78119d3373cede3923220d *man/weighted_richclub_tm.Rd
-840f9f7a440f8aa6cb1016a49527b07e *man/weighted_richclub_w.Rd
+08dcb3dd8e57012d55ef75288ecca874 *man/weighted_richclub_w.Rd

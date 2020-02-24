@@ -8,7 +8,7 @@ function(net, type=NULL, file=NULL) {
     }
   }
   if(is.null(file))
-    file <- gsub(":", "", gsub(" ", "_", paste("tnet ucinet network-",Sys.time(),".dl", sep="")))
+    file <- tempfile(fileext = ".dl")
   cat("dl\n", file=file, append=FALSE)
   if (attributes(net)$tnet == "weighted one-mode tnet") {
     N <- max(c(net[,"i"], net[,"j"]))

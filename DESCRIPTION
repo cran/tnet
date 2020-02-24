@@ -1,18 +1,16 @@
 Type: Package
 Package: tnet
-Version: 3.0.14.1
-Date: 2015-11-17
-Title: Software for Analysis of Weighted, Two-Mode, and Longitudinal
-        Networks
+Version: 3.0.16
+Date: 2020-02-23
+Title: Weighted, Two-Mode, and Longitudinal Networks Analysis
 Author: Tore Opsahl
-Maintainer: ORPHANED
+Maintainer: Tore Opsahl <tore@opsahl.co.uk>
 Depends: R (>= 2.13.0), igraph, survival
-Description: R package for analyzing weighted, two-mode, and longitudinal networks.
+Description: Binary ties limit the richness of network analyses as relations are unique. The two-mode structure contains a number of features lost when projection it to a one-mode network. Longitudinal datasets allow for an understanding of the causal relationship among ties, which is not the case in cross-sectional datasets as ties are dependent upon each other.
 License: GPL-3
+URL: http://toreopsahl.com/tnet/
+LazyData: true
 NeedsCompilation: no
-Packaged: 2020-01-24 18:27:16 UTC; ripley
+Packaged: 2020-02-23 17:44:22 UTC; tore
 Repository: CRAN
-Date/Publication: 2020-01-24 19:32:07 UTC
-X-CRAN-Original-Maintainer: Tore Opsahl <tore@opsahl.co.uk>
-X-CRAN-Comment: Orphaned and corrected on 2020-01-24 as check problems
-        were not corrected in time.
+Date/Publication: 2020-02-24 18:00:02 UTC

@@ -22,12 +22,12 @@ http://toreopsahl.com/2008/12/12/article-prominence-and-control-the-weighted-ric
 \examples{
 ## Load sample data
 sample <- cbind(
-i=c(1,1,2,2,2,2,3,3,4,5,5,6),
-j=c(2,3,1,3,4,5,1,2,2,2,6,5),
-w=c(4,2,4,4,1,2,2,4,1,2,1,1))
+i=c(1,1,2,2,2,2,3,3,4,5),
+j=c(2,3,1,3,4,5,1,2,2,2),
+w=c(4,2,4,4,1,2,2,4,1,2))
 
 ## Run the function
-weighted_richclub_w(sample, rich="k", reshuffle="weights")
+weighted_richclub_w(sample, rich="k", reshuffle="weights", NR = 100)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
